@@ -6,3 +6,12 @@ C:\Users\admin\source\repos\RemoteControl\TcpServerRoot\bin\Debug\netstandard2.0
 C:\Users\admin\source\repos\RemoteControl\TcpServerRoot\bin\Debug\netstandard2.0\TcpServerRoot.pdb
 C:\Users\admin\source\repos\RemoteControl\TcpServerRoot\obj\Debug\netstandard2.0\TcpServerRoot.dll
 C:\Users\admin\source\repos\RemoteControl\TcpServerRoot\obj\Debug\netstandard2.0\TcpServerRoot.pdb
+D:\RemoteControl\TcpServerRoot\bin\Debug\netstandard2.0\TcpServerRoot.deps.json
+D:\RemoteControl\TcpServerRoot\bin\Debug\netstandard2.0\TcpServerRoot.dll
+D:\RemoteControl\TcpServerRoot\bin\Debug\netstandard2.0\TcpServerRoot.pdb
+D:\RemoteControl\TcpServerRoot\obj\Debug\netstandard2.0\TcpServerRoot.csprojAssemblyReference.cache
+D:\RemoteControl\TcpServerRoot\obj\Debug\netstandard2.0\TcpServerRoot.csproj.CoreCompileInputs.cache
+D:\RemoteControl\TcpServerRoot\obj\Debug\netstandard2.0\TcpServerRoot.AssemblyInfoInputs.cache
+D:\RemoteControl\TcpServerRoot\obj\Debug\netstandard2.0\TcpServerRoot.AssemblyInfo.cs
+D:\RemoteControl\TcpServerRoot\obj\Debug\netstandard2.0\TcpServerRoot.dll
+D:\RemoteControl\TcpServerRoot\obj\Debug\netstandard2.0\TcpServerRoot.pdb

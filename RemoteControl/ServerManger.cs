@@ -19,7 +19,7 @@ namespace RemoteControl
             ToolClass.GetDataPack = GetPack;
             ToolClass.outPutInfo = printInfo;
             ToolClass.isUserDataPack = true;
-            ToolClass.msgArrLen = 10240000;
+            ToolClass.msgArrLen = 102400;
             bc = new TcpServer(new socketEvent());
             bc.InitServer("0.0.0.0",54321);
         }

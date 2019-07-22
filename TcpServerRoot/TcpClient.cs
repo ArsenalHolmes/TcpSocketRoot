@@ -73,8 +73,6 @@ namespace TcpServerRoot
                 return;
             }
 
-            //msgList = new List<ArraySegment<byte>>();d
-            //client.BeginReceive(msgList, SocketFlags.None, ReceiveCallBack, null);
 
             client.BeginReceive(msgArr, 0, msgArr.Length, SocketFlags.None, ReceiveCallBack, null);
         }

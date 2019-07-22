@@ -26,7 +26,6 @@ namespace TcpClientRoot
         {
             lock (msgList)
             {
-                //TODO 处理
                 byte[] arr;
                 using (MemoryStream ms = new MemoryStream(msgList.ToArray()))
                 {
@@ -64,14 +63,7 @@ namespace TcpClientRoot
                     SystemMsgRead(dp);
                     break;
                 case MessageType.Normal:
-                    if (ToolClass.isUserDataPack)
-                    {
-                        UserMsgRead(dp);
-                    }
-                    else
-                    {
-                        UserMsgRead(dp.Msg);
-                    }
+                    UserMsgRead(dp);
                     break;
             }
         }
@@ -95,32 +87,10 @@ namespace TcpClientRoot
         /// 用户消息处理
         /// </summary>
         /// <param name="msg"></param>
-        public abstract void UserMsgRead(byte[] msg);
+        public virtual void UserMsgRead(byte[] msg) { }
 
         public abstract void UserMsgRead(DataPack dp);
 
-        public int MsgDecompose(ref byte[] msg, int len = 4)
-        {
-            try
-            {
-                using (MemoryStream ms = new MemoryStream(msg))
-                {
-                    using (BinaryReader br = new BinaryReader(ms))
-                    {
-                        int i = br.ReadInt32();
-                        byte[] arr = br.ReadBytes((int)(ms.Length - ms.Position));
-                        msg = arr;
-                        return i;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                ToolClass.printInfo("MsgDecomposeError" + e.StackTrace);
-                throw;
-            }
-
-        }
     }
 
     public class DataPack
@@ -168,7 +138,7 @@ namespace TcpClientRoot
             }
         }
 
-        public DataPack(byte[] msg=null)
+        public DataPack(byte[] msg = null)
         {
             this.Msg = msg;
         }
@@ -322,14 +292,32 @@ namespace TcpClientRoot
         public DataPack WriteBool(bool b)
         {
             byte[] arr = BitConverter.GetBytes(b);
-            
+
             return WriteByteArr(arr);
         }
 
-
+        public long ReadLong()
+        {
+            try
+            {
+                byte[] arr = ReadByteArr();
+                long f = BitConverter.ToInt64(arr, 0);
+                return f;
+            }
+            catch (Exception e)
+            {
+                ToolClass.printInfo(e);
+                return -1;
+            }
+        }
+        public DataPack WriteLong(long l)
+        {
+            byte[] arr = BitConverter.GetBytes(l);
+            return WriteByteArr(arr);
+        }
         public DataPack WriteDataPack(DataPack dp)
         {
-            return WriteByteArr(dp.Msg);
+            return WriteByteArr(dp.HaveLengthMsgArr);
         }
 
         public DataPack ReadDataPack()
@@ -378,7 +366,7 @@ namespace TcpClientRoot
                         bw.Write(Arr);
                         Msg = ms.ToArray();
 
-                        
+
                         return this;
                     }
                 }
@@ -416,15 +404,20 @@ namespace TcpClientRoot
             return dp.WriteString(i);
         }
 
+        public static DataPack operator +(DataPack dp, byte[] arr)
+        {
+            return dp.WriteByteArr(arr);
+        }
         public static DataPack operator +(DataPack dp, DataPack i)
         {
             return dp.WriteDataPack(i);
         }
 
-        public static DataPack operator+(DataPack dp,byte[] arr)
+        public static DataPack operator +(DataPack dp, long l)
         {
-            return dp.WriteByteArr(arr);
+            return dp.WriteLong(l);
         }
+
 
         #endregion
     }

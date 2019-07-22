@@ -7,3 +7,12 @@ C:\Users\admin\source\repos\RemoteControl\TcpClientRoot\bin\Debug\netstandard2.0
 C:\Users\admin\source\repos\RemoteControl\TcpClientRoot\obj\Debug\netstandard2.0\TcpClientRoot.dll
 C:\Users\admin\source\repos\RemoteControl\TcpClientRoot\obj\Debug\netstandard2.0\TcpClientRoot.pdb
 C:\Users\admin\source\repos\RemoteControl\TcpClientRoot\obj\Debug\netstandard2.0\TcpClientRoot.csprojAssemblyReference.cache
+D:\RemoteControl\TcpClientRoot\bin\Debug\netstandard2.0\TcpClientRoot.deps.json
+D:\RemoteControl\TcpClientRoot\bin\Debug\netstandard2.0\TcpClientRoot.dll
+D:\RemoteControl\TcpClientRoot\bin\Debug\netstandard2.0\TcpClientRoot.pdb
+D:\RemoteControl\TcpClientRoot\obj\Debug\netstandard2.0\TcpClientRoot.csprojAssemblyReference.cache
+D:\RemoteControl\TcpClientRoot\obj\Debug\netstandard2.0\TcpClientRoot.csproj.CoreCompileInputs.cache
+D:\RemoteControl\TcpClientRoot\obj\Debug\netstandard2.0\TcpClientRoot.AssemblyInfoInputs.cache
+D:\RemoteControl\TcpClientRoot\obj\Debug\netstandard2.0\TcpClientRoot.AssemblyInfo.cs
+D:\RemoteControl\TcpClientRoot\obj\Debug\netstandard2.0\TcpClientRoot.dll
+D:\RemoteControl\TcpClientRoot\obj\Debug\netstandard2.0\TcpClientRoot.pdb
