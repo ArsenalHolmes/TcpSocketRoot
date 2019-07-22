@@ -1,0 +1,14 @@
+C:\Users\admin\Desktop\inputsimulator\WindowsInput\bin\Debug\WindowsInput.xml
+C:\Users\admin\Desktop\inputsimulator\WindowsInput\bin\Debug\WindowsInput.dll
+C:\Users\admin\Desktop\inputsimulator\WindowsInput\bin\Debug\WindowsInput.pdb
+C:\Users\admin\Desktop\inputsimulator\WindowsInput\obj\Debug\WindowsInput.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\inputsimulator\WindowsInput\obj\Debug\WindowsInput.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\inputsimulator\WindowsInput\obj\Debug\WindowsInput.dll
+C:\Users\admin\Desktop\inputsimulator\WindowsInput\obj\Debug\WindowsInput.pdb
+C:\Users\admin\source\repos\RemoteControl\WindowsInput\bin\Debug\WindowsInput.xml
+C:\Users\admin\source\repos\RemoteControl\WindowsInput\bin\Debug\WindowsInput.dll
+C:\Users\admin\source\repos\RemoteControl\WindowsInput\bin\Debug\WindowsInput.pdb
+C:\Users\admin\source\repos\RemoteControl\WindowsInput\obj\Debug\WindowsInput.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\RemoteControl\WindowsInput\obj\Debug\WindowsInput.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\RemoteControl\WindowsInput\obj\Debug\WindowsInput.dll
+C:\Users\admin\source\repos\RemoteControl\WindowsInput\obj\Debug\WindowsInput.pdb

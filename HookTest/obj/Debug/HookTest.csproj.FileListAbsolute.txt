@@ -1,0 +1,10 @@
+C:\Users\admin\source\repos\RemoteControl\HookTest\bin\Debug\HookTest.exe.config
+C:\Users\admin\source\repos\RemoteControl\HookTest\bin\Debug\HookTest.exe
+C:\Users\admin\source\repos\RemoteControl\HookTest\bin\Debug\HookTest.pdb
+C:\Users\admin\source\repos\RemoteControl\HookTest\obj\Debug\HookTest.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\RemoteControl\HookTest\obj\Debug\HookTest.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\RemoteControl\HookTest\obj\Debug\HookTest.exe
+C:\Users\admin\source\repos\RemoteControl\HookTest\obj\Debug\HookTest.pdb
+C:\Users\admin\source\repos\RemoteControl\HookTest\bin\Debug\TcpClientRoot.dll
+C:\Users\admin\source\repos\RemoteControl\HookTest\bin\Debug\TcpClientRoot.pdb
+C:\Users\admin\source\repos\RemoteControl\HookTest\obj\Debug\HookTest.csproj.CopyComplete

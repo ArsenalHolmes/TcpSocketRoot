@@ -1,0 +1,13 @@
+﻿<Window x:Class="RemoteControl.ClientControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RemoteControl"
+        mc:Ignorable="d"
+        Title="ClientControl" Height="720" Width="1280">
+    <Grid AllowDrop="True" PreviewDrop="FilePath_PreviewDrop" PreviewDragOver="FilePath_PreviewDragOver">
+        <Image Name="DesktopImg" Stretch="Fill"/>
+        <ProgressBar Name="bar" Margin="320,300,320,300" Opacity="100" Value="100"/>
+    </Grid>
+</Window>
