@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TcpServerRoot", "TcpServerR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsInput", "WindowsInput\WindowsInput.csproj", "{3549CD6F-80F8-450F-B99E-CF0A736B1F2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartTool", "StartTool\StartTool.csproj", "{C7F6D0D7-B1AB-4744-B03C-4160A9CFB69B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3549CD6F-80F8-450F-B99E-CF0A736B1F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3549CD6F-80F8-450F-B99E-CF0A736B1F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3549CD6F-80F8-450F-B99E-CF0A736B1F2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7F6D0D7-B1AB-4744-B03C-4160A9CFB69B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7F6D0D7-B1AB-4744-B03C-4160A9CFB69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7F6D0D7-B1AB-4744-B03C-4160A9CFB69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7F6D0D7-B1AB-4744-B03C-4160A9CFB69B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

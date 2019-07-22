@@ -1,0 +1,34 @@
+﻿<Window x:Class="StartTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StartTool"
+        mc:Ignorable="d"
+		Topmost="False"
+		ResizeMode="CanMinimize"
+		WindowState="Minimized"
+        Title="StartTool" Height="400" Width="270">
+    <Canvas AllowDrop="True" PreviewDrop="FilePath_PreviewDrop" PreviewDragOver="FilePath_PreviewDragOver">
+        <Label Name="FilePath"    Content="" HorizontalContentAlignment="Center" BorderBrush="Red" Width="220" BorderThickness="1" Canvas.Top="18" Canvas.Left="20"/>
+        <Button Name="selectFile" Content="选择启动文件" Height="19" Width="65" Canvas.Top="55" Canvas.Left="100" FontSize="10"></Button>
+
+        <StackPanel Height="90" Width="242" Canvas.Top="90" Canvas.Left="10">
+            <CheckBox Name="IsFrame" Margin="0,0,0,10" Content="有无边框" />
+            <TextBox Name="posBox" ToolTip="坐标。大小 (*,*,*,*)"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Width="120" FontSize="10" Height="20"/>
+            <TextBox Name="argBox" Margin="0,10,0,10" ToolTip="启动参数"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Width="120" FontSize="10" Height="20"/>
+        </StackPanel>
+        <!--<TextBox Name="wt" Width="264" Canvas.Top="185" ></TextBox>
+		<TextBox Name="ht" Width="264" Canvas.Top="210"></TextBox>-->
+        <TextBox Name="mousePos" Width="120" Canvas.Top="185" HorizontalAlignment="Center" Canvas.Left="70" ToolTip="鼠标坐标"/>
+
+        <TextBox Name="ipBox" Width="105" Canvas.Top="215" HorizontalAlignment="Center" Canvas.Left="20" ToolTip="IP"/>
+        <TextBox Name="portBox" Width="55" Canvas.Top="215" HorizontalAlignment="Center" Canvas.Left="135" ToolTip="端口号"/>
+
+
+        <Button Click="Button_Click" Content="启动" Height="20" Width="50" Canvas.Left="105" Canvas.Top="250"></Button>
+        <Button Click="Button_Click_2" Content="禁止边缘滑动" Height="20" Width="100" Canvas.Left="80" Canvas.Top="280"></Button>
+        <Button Click="Button_Click_1" Content="设置此程序为开机启动" Height="20" Width="140" Canvas.Left="60" Canvas.Top="310"></Button>
+
+    </Canvas>
+</Window>

@@ -83,15 +83,6 @@ namespace RemoteControl
         private void KeyDownEvent(object sender, KeyEventArgs e)
         {
 
-        //    AltF4,
-        //AltTab,
-        //WinD,
-           
-
-            //SpeKeyBoard
-
-
-
 
         }
 
