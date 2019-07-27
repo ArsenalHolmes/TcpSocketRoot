@@ -11,7 +11,7 @@ namespace TcpServerRoot
         Socket client;
         TcpServer server;
 
-        BaseDataPack DataPack;
+        public BaseDataPack DataPack { private set; get; }
         ISocketEvent socketEvent;
 
         public EndPoint GetEndPoint
@@ -56,7 +56,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 if (socketEvent != null) socketEvent.SendFailEvent(this,dp.Msg);
                 Disconnect();
                 return false;
@@ -67,13 +68,10 @@ namespace TcpServerRoot
 
         public void BeginReceive()
         {
-
             if (client == null)
             {
-                return;
+                throw new SocketException("开始接受消息client为空");
             }
-
-
             client.BeginReceive(msgArr, 0, msgArr.Length, SocketFlags.None, ReceiveCallBack, null);
         }
 
@@ -97,7 +95,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 isError = true;
                 if (socketEvent != null) socketEvent.ReceiveFailEvent(this);
             }

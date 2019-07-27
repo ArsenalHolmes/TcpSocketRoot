@@ -10,10 +10,21 @@ namespace TcpServerRoot
     {
         List<byte> msgList = new List<byte>();
 
+        public int MsgListCount
+        {
+            get
+            {
+                return msgList.Count;
+            }
+        }
+
         protected TcpClient bc;
         public void AddMsg(byte[] msg)
         {
-            msgList.AddRange(msg);
+            lock (msgList)
+            {
+                msgList.AddRange(msg);
+            }
             HandleMsg();
         }
 
@@ -40,11 +51,7 @@ namespace TcpServerRoot
                         msgList.AddRange(br.ReadBytes((int)(ms.Length - ms.Position)));
                     }
                 }
-                //msgRead(arr); //多线程处理消息
-                ThreadPool.QueueUserWorkItem((obj) =>
-                {
-                    msgRead(arr);
-                });
+                msgRead(arr);
                 if (msgList.Count > 0) HandleMsg();
             }
         }
@@ -63,7 +70,10 @@ namespace TcpServerRoot
                     SystemMsgRead(dp);
                     break;
                 case MessageType.Normal:
-                    UserMsgRead(dp);
+                    MainThreadFunctionQueue.Enqueue(()=> {
+                        UserMsgRead(dp);
+                    });
+                    //UserMsgRead(dp);
                     break;
             }
         }
@@ -90,6 +100,29 @@ namespace TcpServerRoot
         public virtual void UserMsgRead(byte[] msg) { }
 
         public abstract void UserMsgRead(DataPack dp);
+
+        #region 主线程调用方法
+
+        Queue<Action> MainThreadFunctionQueue=new Queue<Action>();
+
+        public void HandMainThreadFunctio()
+        {
+            try
+            {
+                while (MainThreadFunctionQueue.Count > 0)
+                {
+                    MainThreadFunctionQueue.Dequeue()();
+                }
+            }
+            catch (Exception e)
+            {
+                
+                throw;
+            }
+
+        }
+
+        #endregion
 
     }
 
@@ -175,7 +208,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return "";
             }
 
@@ -189,7 +223,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return this;
             }
         }
@@ -204,7 +239,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return -1;
             }
         }
@@ -224,7 +260,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return -1;
             }
         }
@@ -250,7 +287,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return -1;
             }
         }
@@ -265,7 +303,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return -1;
             }
         }
@@ -285,7 +324,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return false;
             }
         }
@@ -306,7 +346,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return -1;
             }
         }
@@ -346,7 +387,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return null;
             }
 
@@ -373,7 +415,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return this;
             }
         }

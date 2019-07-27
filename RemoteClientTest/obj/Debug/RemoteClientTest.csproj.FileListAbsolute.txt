@@ -11,3 +11,16 @@ C:\Users\admin\source\repos\RemoteControl\RemoteClientTest\bin\Debug\WindowsInpu
 C:\Users\admin\source\repos\RemoteControl\RemoteClientTest\bin\Debug\WindowsInput.pdb
 C:\Users\admin\source\repos\RemoteControl\RemoteClientTest\bin\Debug\WindowsInput.xml
 C:\Users\admin\source\repos\RemoteControl\RemoteClientTest\obj\Debug\RemoteClientTest.csprojAssemblyReference.cache
+D:\RemoteControl\RemoteClientTest\bin\Debug\RemoteClientTest.exe.config
+D:\RemoteControl\RemoteClientTest\bin\Debug\RemoteClientTest.exe
+D:\RemoteControl\RemoteClientTest\bin\Debug\RemoteClientTest.pdb
+D:\RemoteControl\RemoteClientTest\bin\Debug\TcpClientRoot.dll
+D:\RemoteControl\RemoteClientTest\bin\Debug\WindowsInput.dll
+D:\RemoteControl\RemoteClientTest\bin\Debug\TcpClientRoot.pdb
+D:\RemoteControl\RemoteClientTest\bin\Debug\WindowsInput.pdb
+D:\RemoteControl\RemoteClientTest\bin\Debug\WindowsInput.xml
+D:\RemoteControl\RemoteClientTest\obj\Debug\RemoteClientTest.csprojAssemblyReference.cache
+D:\RemoteControl\RemoteClientTest\obj\Debug\RemoteClientTest.csproj.CoreCompileInputs.cache
+D:\RemoteControl\RemoteClientTest\obj\Debug\RemoteClientTest.csproj.CopyComplete
+D:\RemoteControl\RemoteClientTest\obj\Debug\RemoteClientTest.exe
+D:\RemoteControl\RemoteClientTest\obj\Debug\RemoteClientTest.pdb

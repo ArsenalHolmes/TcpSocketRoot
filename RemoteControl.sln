@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsInput", "WindowsInpu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartTool", "StartTool\StartTool.csproj", "{C7F6D0D7-B1AB-4744-B03C-4160A9CFB69B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingSystem", "LoggingSystem\LoggingSystem.csproj", "{554532D2-C488-41A1-B513-5C9AC6F53A2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{C7F6D0D7-B1AB-4744-B03C-4160A9CFB69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7F6D0D7-B1AB-4744-B03C-4160A9CFB69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7F6D0D7-B1AB-4744-B03C-4160A9CFB69B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{554532D2-C488-41A1-B513-5C9AC6F53A2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{554532D2-C488-41A1-B513-5C9AC6F53A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{554532D2-C488-41A1-B513-5C9AC6F53A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{554532D2-C488-41A1-B513-5C9AC6F53A2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

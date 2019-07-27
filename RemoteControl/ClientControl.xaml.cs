@@ -36,7 +36,7 @@ namespace RemoteControl
             t.Start();
 
             this.Closed += Window_Closed;
-            this.KeyDown += KeyDownEvent;
+            //this.KeyDown += KeyDownEvent;
             this.PreviewKeyDown += ClientControl_PreviewKeyDown;
 
             this.DesktopImg.MouseDown += ImgMouseDownEvent;
@@ -80,11 +80,6 @@ namespace RemoteControl
             client.SendMsg(dp);
         }
 
-        private void KeyDownEvent(object sender, KeyEventArgs e)
-        {
-
-
-        }
 
         public void ThreadClose()
         {
@@ -203,7 +198,6 @@ namespace RemoteControl
             {
                 //Thread.Sleep(MainWindow.instances.RushNumber);
                 Thread.Sleep(100);
-                Console.WriteLine("qwq"+client);
                 if (client != null)
                 {
                     DataPack dp = new DataPack();

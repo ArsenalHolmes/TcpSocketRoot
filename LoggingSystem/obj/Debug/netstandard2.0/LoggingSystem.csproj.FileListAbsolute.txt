@@ -1,0 +1,8 @@
+D:\RemoteControl\LoggingSystem\bin\Debug\netstandard2.0\LoggingSystem.deps.json
+D:\RemoteControl\LoggingSystem\bin\Debug\netstandard2.0\LoggingSystem.dll
+D:\RemoteControl\LoggingSystem\bin\Debug\netstandard2.0\LoggingSystem.pdb
+D:\RemoteControl\LoggingSystem\obj\Debug\netstandard2.0\LoggingSystem.csproj.CoreCompileInputs.cache
+D:\RemoteControl\LoggingSystem\obj\Debug\netstandard2.0\LoggingSystem.AssemblyInfoInputs.cache
+D:\RemoteControl\LoggingSystem\obj\Debug\netstandard2.0\LoggingSystem.AssemblyInfo.cs
+D:\RemoteControl\LoggingSystem\obj\Debug\netstandard2.0\LoggingSystem.dll
+D:\RemoteControl\LoggingSystem\obj\Debug\netstandard2.0\LoggingSystem.pdb

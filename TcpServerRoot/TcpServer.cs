@@ -26,11 +26,9 @@ namespace TcpServerRoot
         int maxConnectCount;
         ISocketEvent socketEvent;
 
-        #region list
+        #region ClientList
 
         List<TcpClient> ClientList = new List<TcpClient>();
-
-        List<TcpClient> WaitRemoveList = new List<TcpClient>();
 
         public void AddClient(TcpClient client)
         {
@@ -39,14 +37,22 @@ namespace TcpServerRoot
                 ClientList.Add(client);
             }
         }
+
         public void RemoveClient(TcpClient client)
         {
-            lock (ClientList)
+            if (ClientList.Contains(client))
             {
                 ClientList.Remove(client);
             }
         }
 
+        public void MainThreadFunction()
+        {
+            //foreach (var item in ClientList)
+            //{
+            //    item.
+            //}
+        }
 
         #endregion
 
@@ -64,7 +70,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 if (socketEvent != null) socketEvent.InitFailEvent(this);
             }
         }
@@ -84,7 +91,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 if (socketEvent != null) socketEvent.AcceptFailEvent(this, tc);
             }
             finally

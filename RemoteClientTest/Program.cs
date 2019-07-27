@@ -37,8 +37,10 @@ namespace RemoteClientTest
         {
 
 
-            InputSimulator sim = new InputSimulator();
-            sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.LWIN, VirtualKeyCode.VK_D);
+            FileInfo fi = new FileInfo(@"D:\新建文本文档.txt");
+            Console.WriteLine(fi.Length);
+            //InputSimulator sim = new InputSimulator();
+            //sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.LWIN, VirtualKeyCode.VK_D);
 
             while (true)
             {

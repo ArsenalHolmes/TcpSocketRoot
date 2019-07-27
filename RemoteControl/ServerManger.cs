@@ -144,4 +144,10 @@ namespace RemoteControl
         {
         }
     }
+
+    public class LogClass:ilo
+    {
+
+    }
 }
+

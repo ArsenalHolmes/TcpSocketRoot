@@ -1,23 +1,14 @@
 ﻿using Microsoft.Win32;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace StartTool
 {
@@ -37,7 +28,7 @@ namespace StartTool
             InitializeComponent();
             InitBindEvent();
             InitLoadSetting();
-            //File.ReadAllLines()
+            this.Closed += Window_Closed;
             cm = new ClientManger(IP, int.Parse(port));
             basePath = AppDomain.CurrentDomain.BaseDirectory;
             SettingPath = basePath + SettingPath;
@@ -150,7 +141,7 @@ namespace StartTool
         /// <summary>
         /// 配置文件名字
         /// </summary>
-        string SettingPath = "Setting";
+        string SettingPath = "Setting.json";
 
         /// <summary>
         /// 初始化加载配置文件
@@ -160,7 +151,7 @@ namespace StartTool
             if (File.Exists(SettingPath))
             {
                 string s = File.ReadAllText(SettingPath);
-                Dictionary<string, object> settingDic = JsonConvert.DeserializeObject<Dictionary<string, object>>(s);
+                Dictionary<string, object> settingDic = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, object>>(s);
                 FilePathStr = (string)settingDic["filePath"];
                 string[] posArr = ((string)settingDic["posSize"]).Split(',');
                 foreach (var item in posArr)
@@ -190,6 +181,8 @@ namespace StartTool
                 posList.Add(1920);
                 posList.Add(1080);
                 posBox.Text = string.Format("{0},{1},{2},{3}", posList[0], posList[1], posList[2], posList[3]);
+                ipBox.Text = IP;
+                portBox.Text = port;
             }
 
         }
@@ -209,7 +202,7 @@ namespace StartTool
             settingDic.Add("IP", IP);
             settingDic.Add("port", port);
 
-            string temp = JsonConvert.SerializeObject(settingDic);
+            string temp = Newtonsoft.Json.JsonConvert.SerializeObject(settingDic);
 
             File.WriteAllText(SettingPath, temp);
         }

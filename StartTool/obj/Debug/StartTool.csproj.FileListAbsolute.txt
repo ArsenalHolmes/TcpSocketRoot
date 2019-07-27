@@ -8,6 +8,8 @@ D:\RemoteControl\StartTool\bin\Debug\StartTool.pdb
 D:\RemoteControl\StartTool\bin\Debug\Newtonsoft.Json.dll
 D:\RemoteControl\StartTool\bin\Debug\TcpClientRoot.dll
 D:\RemoteControl\StartTool\bin\Debug\WindowsInput.dll
+D:\RemoteControl\StartTool\bin\Debug\Newtonsoft.Json.pdb
+D:\RemoteControl\StartTool\bin\Debug\Newtonsoft.Json.xml
 D:\RemoteControl\StartTool\bin\Debug\TcpClientRoot.pdb
 D:\RemoteControl\StartTool\bin\Debug\WindowsInput.pdb
 D:\RemoteControl\StartTool\bin\Debug\WindowsInput.xml
