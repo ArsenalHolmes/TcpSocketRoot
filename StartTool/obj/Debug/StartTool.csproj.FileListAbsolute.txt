@@ -23,4 +23,3 @@ D:\RemoteControl\StartTool\obj\Debug\StartTool.exe
 D:\RemoteControl\StartTool\obj\Debug\StartTool.pdb
 D:\RemoteControl\StartTool\bin\Debug\LoggingSystem.dll
 D:\RemoteControl\StartTool\bin\Debug\LoggingSystem.pdb
-D:\RemoteControl\StartTool\obj\Debug\StartTool.csprojAssemblyReference.cache

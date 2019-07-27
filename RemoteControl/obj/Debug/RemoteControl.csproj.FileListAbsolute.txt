@@ -42,4 +42,3 @@ D:\RemoteControl\RemoteControl\obj\Debug\RemoteControl.exe
 D:\RemoteControl\RemoteControl\obj\Debug\RemoteControl.pdb
 D:\RemoteControl\RemoteControl\bin\Debug\LoggingSystem.dll
 D:\RemoteControl\RemoteControl\bin\Debug\LoggingSystem.pdb
-D:\RemoteControl\RemoteControl\obj\Debug\RemoteControl.csprojAssemblyReference.cache

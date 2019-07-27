@@ -41,8 +41,14 @@ public class LogManger
                     File.Delete(LogPath);
                 }
             }
+            else
+            {
+                File.CreateText(LogPath);
+            }
+
+
             sw = new StreamWriter(LogPath, true, Encoding.UTF8);
-            WriteLog("-----" + DateTime.Now.ToLocalTime().ToString() + "-----");
+            WriteLog("=====" + DateTime.Now.ToLocalTime().ToString() + "=====");
         }
     }
 

@@ -17,7 +17,8 @@ namespace StartTool
         public static ClientManger instaces;
         public ClientManger(string ip,int port)
         {
-            new LogManger(new LogClass(), DateTime.Now.ToShortDateString().ToString() + "_log.txt");
+            //new LogManger(new LogClass(), DateTime.Now.ToShortDateString().ToString() + "_log.txt");
+            new LogManger(new LogClass(), string.Format("{0}_{1}_{2}_log.txt", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day));
             instaces = this;
             ToolClass.GetDataPack = GetPack;
             ToolClass.msgArrLen = 102400;

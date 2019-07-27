@@ -16,7 +16,8 @@ namespace RemoteControl
         public ServerManger()
         {
             instances = this;
-            new LogManger(new LogClass(), DateTime.Now.ToShortDateString().ToString()+"_log.txt");
+            new LogManger(new LogClass(),string.Format("{0}_{1}_{2}_log.txt", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day));
+
             ToolClass.GetDataPack = GetPack;
             ToolClass.msgArrLen = 102400;
             bc = new TcpServer(new socketEvent());
