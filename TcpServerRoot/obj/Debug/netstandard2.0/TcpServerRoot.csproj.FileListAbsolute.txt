@@ -17,3 +17,4 @@ D:\RemoteControl\TcpServerRoot\obj\Debug\netstandard2.0\TcpServerRoot.pdb
 D:\RemoteControl\TcpServerRoot\bin\Debug\netstandard2.0\LoggingSystem.dll
 D:\RemoteControl\TcpServerRoot\bin\Debug\netstandard2.0\LoggingSystem.pdb
 D:\RemoteControl\TcpServerRoot\obj\Debug\netstandard2.0\TcpServerRoot.csproj.CopyComplete
+D:\RemoteControl\TcpServerRoot\obj\Debug\netstandard2.0\TcpServerRoot.csprojAssemblyReference.cache

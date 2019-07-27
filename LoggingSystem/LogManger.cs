@@ -20,11 +20,17 @@ public class LogManger
     }
     static LogManger instance;
     string LogPath;
-    public LogManger(ILog log, string LogPath = "",int maxLength=5*1024*1024)
+    string selfName;
+    public LogManger(ILog log, string LogPath = "",string selfName="",int maxLength=5*1024*1024)
     {
         instance = this;
         this.log = log;
         this.LogPath = LogPath;
+        this.selfName = selfName;
+        if (this.selfName=="")
+        {
+            this.selfName= Environment.MachineName;
+        }
         if (LogPath != "")
         {
             if (File.Exists(LogPath))
@@ -42,7 +48,7 @@ public class LogManger
 
     public void Info(object msg)
     {
-        LogItem item = new LogItem(msg);
+        LogItem item = new LogItem(msg, selfName, MsgType.Error);
         if (log != null)
         {
             log.Info(item.ToString());
@@ -51,7 +57,7 @@ public class LogManger
     }
     public void Warning(object msg)
     {
-        LogItem item = new LogItem(msg, MsgType.Warning);
+        LogItem item = new LogItem(msg, selfName, MsgType.Error);
         if (log != null)
         {
             log.Warning(item.ToString());
@@ -60,7 +66,7 @@ public class LogManger
     }
     public void Error(object msg)
     {
-        LogItem item = new LogItem(msg, MsgType.Error);
+        LogItem item = new LogItem(msg, selfName, MsgType.Error);
         if (log != null)
         {
             log.Error(item.ToString());
@@ -98,18 +104,29 @@ public struct LogItem
 
     MsgType type;
     object msg;
-    string timeStr;
+    DateTime time;
+    string selfName;
 
-    public LogItem(object msg, MsgType type = MsgType.Info)
+    public LogItem(object msg,string selfName, MsgType type = MsgType.Info)
     {
         this.type = type;
         this.msg = msg;
-        this.timeStr = DateTime.Now.ToLocalTime().ToString();
+        this.selfName = selfName;
+        this.time = DateTime.Now.ToLocalTime();
+    }
+    public LogItem(string str)
+    {
+        str = str.Replace("----", "-");
+        string[] arr = str.Split('-');
+        selfName = arr[0];
+        type = (MsgType)Enum.Parse(typeof(MsgType), arr[1]);
+        this.msg = arr[2];
+        time = DateTime.Parse(arr[3]);
     }
 
     public override string ToString()
     {
-        return string.Format("{0}----{1}----{2}", type.ToString(), msg, timeStr);
+        return string.Format("{0}----{1}----{2}----{3}", selfName, type.ToString(), msg, time);
     }
 }
 
