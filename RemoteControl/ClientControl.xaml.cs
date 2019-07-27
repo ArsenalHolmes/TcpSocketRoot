@@ -147,24 +147,57 @@ namespace RemoteControl
             dp += (short)MsgEnum.MouseMove;
             dp += (float)x;
             dp += (float)y;
-            client.SendMsg(dp);
+            //client.SendMsg(dp);
         }
 
         private void ImgMouseUpEvent(object sender, MouseButtonEventArgs e)
         {
-            DataPack dp = new DataPack();
-            dp += (short)MsgEnum.MouseClick;
-            dp += (short)MouseEventFlag.LeftUp;
-            client.SendMsg(dp);
+            
+            if (e.LeftButton == MouseButtonState.Released)
+            {
+                DataPack dp = new DataPack();
+                dp += (short)MsgEnum.MouseClick;
+                dp += (short)MouseEventFlag.LeftUp;
+                //LogManger.Instance.Info("左键抬起");
+                client.SendMsg(dp);
+            }
+            //else if (e.RightButton == MouseButtonState.Released)
+            //{
+            //    DataPack dp = new DataPack();
+            //    dp += (short)MsgEnum.MouseClick;
+            //    dp += (short)MouseEventFlag.RightUp;
+            //    LogManger.Instance.Info("右键抬起");
+            //    //client.SendMsg(dp);
+            //}
+
         }
 
         private void ImgMouseDownEvent(object sender, MouseButtonEventArgs e)
         {
+            if (e.LeftButton==MouseButtonState.Pressed)
+            {
+                DataPack dp = new DataPack();
+                dp += (short)MsgEnum.MouseClick;
+                dp += (short)MouseEventFlag.LeftDown;
+                client.SendMsg(dp);
+                //LogManger.Instance.Info("左键按下");
+            }
+            else if (e.RightButton==MouseButtonState.Pressed)
+            {
+                DataPack dp = new DataPack();
+                dp += (short)MsgEnum.MouseClick;
+                dp += (short)MouseEventFlag.RightDown;
+                client.SendMsg(dp);
+                //LogManger.Instance.Info("右键按下");
 
-            DataPack dp = new DataPack();
-            dp += (short)MsgEnum.MouseClick;
-            dp += (short)MouseEventFlag.LeftDown;
-            client.SendMsg(dp);
+                Thread.Sleep(10);
+                DataPack dp2 = new DataPack();
+                dp2 += (short)MsgEnum.MouseClick;
+                dp2 += (short)MouseEventFlag.RightUp;
+                //LogManger.Instance.Info("右键抬起");
+                client.SendMsg(dp2);
+            }
+
         }
 
         enum MouseEventFlag : uint //设置鼠标动作的键值
@@ -184,7 +217,7 @@ namespace RemoteControl
         }
 
         #endregion
-        bool isExit;
+        public bool isExit;
 
         private void Window_Closed(object sender, EventArgs e)
         {
@@ -209,7 +242,7 @@ namespace RemoteControl
 
         public void RushDesktopImg(byte[] msg)
         {
-            Console.WriteLine(msg.Length);
+            //LogManger.Instance.Info("图片长度"+msg.Length);
             this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
                 BitmapImage bmp = new BitmapImage();

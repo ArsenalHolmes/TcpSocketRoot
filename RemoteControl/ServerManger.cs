@@ -11,23 +11,19 @@ namespace RemoteControl
 
     public class ServerManger
     {
-        TcpServer bc;
+        public TcpServer bc { private set; get; }
         public static ServerManger instances;
         public ServerManger()
         {
             instances = this;
+            new LogManger(new LogClass(), DateTime.Now.ToShortDateString().ToString()+"_log.txt");
             ToolClass.GetDataPack = GetPack;
-            ToolClass.outPutInfo = printInfo;
-            ToolClass.isUserDataPack = true;
             ToolClass.msgArrLen = 102400;
             bc = new TcpServer(new socketEvent());
             bc.InitServer("0.0.0.0",54321);
         }
 
-        private void printInfo(object obj)
-        {
-            //Console.WriteLine();
-        }
+
 
         private BaseDataPack GetPack()
         {
@@ -83,7 +79,7 @@ namespace RemoteControl
                         MainWindow.instances.ClientNameDic.Add(bc, n);
                         MainWindow.instances.RushClientList();
                     }
-                    Console.WriteLine(n);
+                   
                     break;
                 default:
                     break;
@@ -96,16 +92,20 @@ namespace RemoteControl
         public void AcceptFailEvent(TcpServer bs, TcpClient bc)
         {
 
+            LogManger.Instance.Info("连接失败"+bc.GetEndPoint);
         }
 
         public void AcceptSuccessEvent(TcpServer bs, TcpClient bc)
         {
-            
+            LogManger.Instance.Info("连接成功"+bc.GetEndPoint);
+
         }
 
         public void ClientDisconnect(TcpServer ts, TcpClient tc)
         {
             //MainWindow.instances.client = null;
+            LogManger.Instance.Info("断开连接" + tc.GetEndPoint);
+
             if (MainWindow.instances.ClientNameDic.ContainsKey(tc))
             {
                 MainWindow.instances.ClientNameDic.Remove(tc);
@@ -145,9 +145,23 @@ namespace RemoteControl
         }
     }
 
-    public class LogClass:ilo
+    public class LogClass : ILog
     {
+        public void Error(string msg)
+        {
+            Console.WriteLine("error:"+msg);
+        }
 
+        public void Info(string msg)
+        {
+            Console.WriteLine("info:"+msg);
+        }
+
+        public void Warning(string msg)
+        {
+            //throw new NotImplementedException();
+            Console.WriteLine("warning:"+msg);
+        }
     }
 }
 

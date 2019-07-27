@@ -82,7 +82,6 @@ namespace TcpServerRoot
             {
                 int len = client.EndReceive(ar);
                 if (len == 0) {
-                    Disconnect();
                     isError = true;
                     if (socketEvent != null) socketEvent.ReceiveFailEvent(this);
                     return;
@@ -115,15 +114,25 @@ namespace TcpServerRoot
 
         private void Disconnect()
         {
-            if (client!=null)
+            try
             {
-                client.Disconnect(true);
-                client = null;
+                if (client != null)
+                {
+                    server.RemoveClient(this);
+                    client.Disconnect(true);
+                    client = null;
+                }
+                if (socketEvent != null)
+                {
+                    socketEvent.ClientDisconnect(server, this);
+                }
             }
-            if (socketEvent!=null)
+            catch (Exception e)
             {
-                socketEvent.ClientDisconnect(server, this);
+                LogManger.Instance.Error(e);
+                throw;
             }
+
         
         }
 

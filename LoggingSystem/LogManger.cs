@@ -20,7 +20,7 @@ public class LogManger
     }
     static LogManger instance;
     string LogPath;
-    public LogManger(ILog log, string LogPath = "")
+    public LogManger(ILog log, string LogPath = "",int maxLength=5*1024*1024)
     {
         instance = this;
         this.log = log;
@@ -30,7 +30,7 @@ public class LogManger
             if (File.Exists(LogPath))
             {
                 FileInfo fi = new FileInfo(LogPath);
-                if (fi.Length > 5 * 1024 * 1024)//5M
+                if (fi.Length > maxLength)//5M
                 {
                     File.Delete(LogPath);
                 }
@@ -38,8 +38,8 @@ public class LogManger
             sw = new StreamWriter(LogPath, true, Encoding.UTF8);
             WriteLog("-----" + DateTime.Now.ToLocalTime().ToString() + "-----");
         }
-
     }
+
     public void Info(object msg)
     {
         LogItem item = new LogItem(msg);
@@ -69,7 +69,7 @@ public class LogManger
     }
 
     StreamWriter sw;
-    public void WriteLog(string msg)
+    void WriteLog(string msg)
     {
         if (sw != null)
         {
@@ -86,13 +86,13 @@ public class LogManger
     }
 }
 
-enum MsgType
+public enum MsgType
 {
     Info,
     Warning,
     Error,
 }
-struct LogItem
+public struct LogItem
 {
 
 

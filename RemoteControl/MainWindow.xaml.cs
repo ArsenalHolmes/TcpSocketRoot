@@ -35,19 +35,46 @@ namespace RemoteControl
 
         public Dictionary<TcpClient, ClientControl> ControlDic = new Dictionary<TcpClient, ClientControl>();
         public Dictionary<TcpClient, string> ClientNameDic = new Dictionary<TcpClient, string>();
+
+        bool isExit=false;
+        Thread thread;
         public MainWindow()
         {
 
             instances = this;
+            this.Closed += CloseEvent;
             InitializeComponent();
             server = new ServerManger();
 
-            //string tempPath = @"F:\飞秋文件接收\刘猛\2019-07-18 10_15_30";
-            //FileCompression.CompressDirectory(tempPath, @"F:\飞秋文件接收\刘猛\新建文件夹", 8,false);
             rushNumber.LostFocus += RushNumber_LostFocus;
             RushNumber = 100;
             rushNumber.Text = RushNumber.ToString();
 
+            thread = new Thread(ThreadFunction);
+            thread.Start();
+
+        }
+
+        private void CloseEvent(object sender, EventArgs e)
+        {
+            isExit = true;
+            LogManger.Instance.SaveLog();
+            List<TcpClient> keys = new List<TcpClient>(ControlDic.Keys);
+            foreach (var item in keys)
+            {
+                CloseControl(item);
+            }
+        }
+
+        private void ThreadFunction()
+        {
+            while (isExit==false)
+            {
+                Thread.Sleep(100);
+                this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate () {
+                    ServerManger.instances.bc.MainThreadFunction();
+                });
+            }
         }
 
         private void RushNumber_LostFocus(object sender, RoutedEventArgs e)
@@ -93,7 +120,6 @@ namespace RemoteControl
         {
             ModelItem mi = (ModelItem)clientBox.SelectedValue;
             ShowControl(mi.Client);
-            Console.WriteLine("click");
         }
 
         public void ShowControl(TcpClient tc)
@@ -109,7 +135,24 @@ namespace RemoteControl
 
         public void CloseControl(TcpClient tc)
         {
-            ControlDic.Remove(tc);
+            try
+            {
+                if (ControlDic.ContainsKey(tc))
+                {
+                    if (ControlDic[tc].isExit == false)
+                    {
+                        ControlDic[tc].Close();
+                    }
+                    ControlDic.Remove(tc);
+                }
+            }
+            catch (Exception e)
+            {
+                LogManger.Instance.Error(e);
+                //throw;
+            }
+
+
         }
     }
 

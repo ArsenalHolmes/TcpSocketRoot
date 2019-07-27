@@ -21,3 +21,5 @@ D:\RemoteControl\StartTool\obj\Debug\StartTool.csproj.CoreCompileInputs.cache
 D:\RemoteControl\StartTool\obj\Debug\StartTool.csproj.CopyComplete
 D:\RemoteControl\StartTool\obj\Debug\StartTool.exe
 D:\RemoteControl\StartTool\obj\Debug\StartTool.pdb
+D:\RemoteControl\StartTool\bin\Debug\LoggingSystem.dll
+D:\RemoteControl\StartTool\bin\Debug\LoggingSystem.pdb

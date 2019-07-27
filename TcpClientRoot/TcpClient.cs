@@ -25,7 +25,7 @@ namespace TcpClientRoot
 
         protected ISocketEvent socketEvent;
 
-        protected BaseDataPack dataPack;
+        public BaseDataPack dataPack { get; protected set; }
 
         bool isConnect;
 
@@ -95,12 +95,10 @@ namespace TcpClientRoot
                 client.BeginReceive(msgArr, 0, ToolClass.msgArrLen, SocketFlags.None, ReceiveCallBack, null);
                 isConnect = true;
                 if (socketEvent != null) socketEvent.ConnectSuccess(this);
-
-                ToolClass.printInfo("断开连接尝试重连");
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 if (socketEvent != null) socketEvent.ConnectFail(this);
                 client = null;
                 isConnect = false;
@@ -127,7 +125,7 @@ namespace TcpClientRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 Disconnect();
                 if (socketEvent != null) socketEvent.SendFailEvent(this, dp.Msg);
                 return false;
@@ -138,10 +136,11 @@ namespace TcpClientRoot
         private void ReceiveCallBack(IAsyncResult ar)
         {
             bool isError = false;
-            if (isConnect == false)
-            {
-                Connect();
-            }
+            
+            //if (isConnect == false)
+            //{
+            //    Connect();
+            //}
 
             if (isConnect)
             {
@@ -166,7 +165,8 @@ namespace TcpClientRoot
                 catch (Exception e)
                 {
                     isError = true;
-                    ToolClass.printInfo(e);
+                    //ToolClass.printInfo(e);
+                    LogManger.Instance.Error(e);
                     if (socketEvent != null) socketEvent.ReceiveFailEvent(this);
                 }
                 finally

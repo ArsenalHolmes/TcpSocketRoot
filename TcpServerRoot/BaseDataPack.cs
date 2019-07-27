@@ -43,7 +43,7 @@ namespace TcpServerRoot
                     using (BinaryReader br = new BinaryReader(ms))
                     {
                         int len = br.ReadInt32();
-                        long oLen = ms.Length - ms.Position;
+                        int oLen = (int)(ms.Length - ms.Position);
                         if (len > oLen) return;
                         arr = br.ReadBytes(len);
 
@@ -52,7 +52,7 @@ namespace TcpServerRoot
                     }
                 }
                 msgRead(arr);
-                if (msgList.Count > 0) HandleMsg();
+                if (msgList.Count > 0) { HandleMsg(); }
             }
         }
 
@@ -116,10 +116,8 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                
-                throw;
+                LogManger.Instance.Error(e);
             }
-
         }
 
         #endregion

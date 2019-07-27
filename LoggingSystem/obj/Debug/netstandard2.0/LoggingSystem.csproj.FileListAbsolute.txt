@@ -6,3 +6,4 @@ D:\RemoteControl\LoggingSystem\obj\Debug\netstandard2.0\LoggingSystem.AssemblyIn
 D:\RemoteControl\LoggingSystem\obj\Debug\netstandard2.0\LoggingSystem.AssemblyInfo.cs
 D:\RemoteControl\LoggingSystem\obj\Debug\netstandard2.0\LoggingSystem.dll
 D:\RemoteControl\LoggingSystem\obj\Debug\netstandard2.0\LoggingSystem.pdb
+D:\RemoteControl\LoggingSystem\obj\Debug\netstandard2.0\LoggingSystem.csprojAssemblyReference.cache

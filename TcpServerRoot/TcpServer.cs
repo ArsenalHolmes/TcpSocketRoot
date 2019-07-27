@@ -11,10 +11,7 @@ namespace TcpServerRoot
     {
         public TcpServer(ISocketEvent socketEvent= null,int maxConnectCount=5)
         {
-            if (ToolClass.outPutInfo == null)
-            {
-                throw new SocketException("outPutInfo为空");
-            }
+
             if (ToolClass.GetDataPack == null)
             {
                 throw new SocketException("GetDataPack为空");
@@ -46,12 +43,15 @@ namespace TcpServerRoot
             }
         }
 
+        /// <summary>
+        /// 主线程调用方法
+        /// </summary>
         public void MainThreadFunction()
         {
-            //foreach (var item in ClientList)
-            //{
-            //    item.
-            //}
+            foreach (var item in ClientList)
+            {
+                item.DataPack.HandMainThreadFunctio();
+            }
         }
 
         #endregion
@@ -125,4 +125,6 @@ namespace TcpServerRoot
     {
         HeartBeat,
     }
+
+  
 }

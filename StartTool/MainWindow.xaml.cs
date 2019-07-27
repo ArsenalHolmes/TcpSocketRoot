@@ -18,6 +18,7 @@ namespace StartTool
     public partial class MainWindow : Window
     {
         Thread mouseThread;
+        Thread socketThread;
         string basePath;
         public static MainWindow instances;
 
@@ -40,10 +41,22 @@ namespace StartTool
             mouseThread = new Thread(startGetMouse);
             mouseThread.Start();
 
+            socketThread = new Thread(socketThreadFunction);
+            socketThread.Start();
+
             this.KeyDown += KeyDownEvent;
 
             ipBox.LostFocus += IpBox_LostFocus;
             portBox.LostFocus += PortBox_LostFocus;
+        }
+
+        private void socketThreadFunction()
+        {
+            while (isExit == false)
+            {
+                Thread.Sleep(100);
+                cm.bc.dataPack.HandMainThreadFunctio();
+            }
         }
 
         private void PortBox_LostFocus(object sender, RoutedEventArgs e)
@@ -408,6 +421,7 @@ namespace StartTool
             SavaSetting();
             isExit = true;
             cm.bc.CloseSocket();
+            LogManger.Instance.SaveLog();
         }
 
         #region 拖入程序。得到路径

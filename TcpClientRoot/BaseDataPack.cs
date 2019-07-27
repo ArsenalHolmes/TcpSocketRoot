@@ -40,12 +40,8 @@ namespace TcpClientRoot
                         msgList.AddRange(br.ReadBytes((int)(ms.Length - ms.Position)));
                     }
                 }
-                //msgRead(arr); //多线程处理消息
-                ThreadPool.QueueUserWorkItem((obj) =>
-                {
-                    msgRead(arr);
-                });
-                if (msgList.Count > 0) HandleMsg();
+                msgRead(arr);
+                if (msgList.Count > 0) { HandleMsg(); }
             }
         }
 
@@ -63,10 +59,30 @@ namespace TcpClientRoot
                     SystemMsgRead(dp);
                     break;
                 case MessageType.Normal:
-                    UserMsgRead(dp);
+                    MainThreadFunctionQueue.Enqueue(() => {
+                        UserMsgRead(dp);
+                    });
                     break;
             }
         }
+        #region 主线程调用方法
+        Queue<Action> MainThreadFunctionQueue = new Queue<Action>();
+
+        public void HandMainThreadFunctio()
+        {
+            try
+            {
+                while (MainThreadFunctionQueue.Count > 0)
+                {
+                    MainThreadFunctionQueue.Dequeue()();
+                }
+            }
+            catch (Exception e)
+            {
+                LogManger.Instance.Error(e);
+            }
+        }
+        #endregion
 
         /// <summary>
         /// 系统消息处理
@@ -175,7 +191,8 @@ namespace TcpClientRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return "";
             }
 
@@ -189,7 +206,8 @@ namespace TcpClientRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return this;
             }
         }
@@ -204,7 +222,8 @@ namespace TcpClientRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return -1;
             }
         }
@@ -224,7 +243,8 @@ namespace TcpClientRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return -1;
             }
         }
@@ -250,7 +270,8 @@ namespace TcpClientRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return -1;
             }
         }
@@ -265,7 +286,8 @@ namespace TcpClientRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return -1;
             }
         }
@@ -285,7 +307,8 @@ namespace TcpClientRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return false;
             }
         }
@@ -306,7 +329,8 @@ namespace TcpClientRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return -1;
             }
         }
@@ -346,7 +370,8 @@ namespace TcpClientRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return null;
             }
 
@@ -373,7 +398,8 @@ namespace TcpClientRoot
             }
             catch (Exception e)
             {
-                ToolClass.printInfo(e);
+                //ToolClass.printInfo(e);
+                LogManger.Instance.Error(e);
                 return this;
             }
         }

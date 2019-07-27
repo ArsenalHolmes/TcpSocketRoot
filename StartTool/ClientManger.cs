@@ -17,19 +17,12 @@ namespace StartTool
         public static ClientManger instaces;
         public ClientManger(string ip,int port)
         {
+            new LogManger(new LogClass(), DateTime.Now.ToShortDateString().ToString() + "_log.txt");
             instaces = this;
             ToolClass.GetDataPack = GetPack;
-            ToolClass.outPutInfo = printInfo;
-            ToolClass.isUserDataPack = true;
             ToolClass.msgArrLen = 102400;
             bc = new TcpClient(new socketEvent());
             bc.Connect(ip, port);
-        }
-
-
-        private void printInfo(object obj)
-        {
-            //Console.WriteLine(obj);
         }
 
         private BaseDataPack GetPack()
@@ -314,4 +307,22 @@ namespace StartTool
         }
     }
 
+    public class LogClass : ILog
+    {
+        public void Error(string msg)
+        {
+            Console.WriteLine("error:" + msg);
+        }
+
+        public void Info(string msg)
+        {
+            Console.WriteLine("info:" + msg);
+        }
+
+        public void Warning(string msg)
+        {
+            //throw new NotImplementedException();
+            Console.WriteLine("warning:" + msg);
+        }
+    }
 }
