@@ -1,0 +1,16 @@
+﻿=====2019/7/29 11:22:00=====
+DMT02----Error----连接成功192.168.5.102:54103----2019/7/29 11:22:00
+DMT02----Error----断开连接----2019/7/29 11:22:24
+DMT02----Error----连接成功192.168.5.102:54106----2019/7/29 11:22:24
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 TcpServerRoot.TcpClient.ReceiveCallBack(IAsyncResult ar) 位置 D:\RemoteControl\TcpServerRoot\TcpClient.cs:行号 83----2019/7/29 11:22:24
+DMT02----Error----断开连接----2019/7/29 11:22:24
+=====2019/7/29 11:36:44=====
+DMT02----Error----连接成功192.168.5.102:54688----2019/7/29 11:36:48
+DMT02----Error----断开连接----2019/7/29 11:37:16
+DMT02----Error----连接成功192.168.5.102:54693----2019/7/29 11:37:17
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 TcpServerRoot.TcpClient.ReceiveCallBack(IAsyncResult ar) 位置 D:\RemoteControl\TcpServerRoot\TcpClient.cs:行号 83----2019/7/29 11:37:17
+DMT02----Error----断开连接----2019/7/29 11:37:17

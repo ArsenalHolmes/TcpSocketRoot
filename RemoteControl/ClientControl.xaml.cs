@@ -147,7 +147,7 @@ namespace RemoteControl
             dp += (short)MsgEnum.MouseMove;
             dp += (float)x;
             dp += (float)y;
-            //client.SendMsg(dp);
+            client.SendMsg(dp);
         }
 
         private void ImgMouseUpEvent(object sender, MouseButtonEventArgs e)
@@ -158,7 +158,6 @@ namespace RemoteControl
                 DataPack dp = new DataPack();
                 dp += (short)MsgEnum.MouseClick;
                 dp += (short)MouseEventFlag.LeftUp;
-                //LogManger.Instance.Info("左键抬起");
                 client.SendMsg(dp);
             }
             //else if (e.RightButton == MouseButtonState.Released)

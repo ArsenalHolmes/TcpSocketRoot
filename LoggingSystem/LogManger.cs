@@ -47,8 +47,18 @@ public class LogManger
             }
 
 
-            sw = new StreamWriter(LogPath, true, Encoding.UTF8);
-            WriteLog("=====" + DateTime.Now.ToLocalTime().ToString() + "=====");
+            try
+            {
+                sw = new StreamWriter(LogPath, true, Encoding.UTF8);
+                WriteLog("=====" + DateTime.Now.ToLocalTime().ToString() + "=====");
+
+            }
+            catch (Exception e)
+            {
+                sw = null;
+            }
+         
+
         }
     }
 
@@ -83,10 +93,18 @@ public class LogManger
     StreamWriter sw;
     void WriteLog(string msg)
     {
-        if (sw != null)
+        try
         {
-            sw.WriteLine(msg);
+            if (sw != null)
+            {
+                sw.WriteLine(msg);
+            }
         }
+        catch (Exception e)
+        {
+
+        }
+
     }
     public void SaveLog()
     {
@@ -94,6 +112,7 @@ public class LogManger
         {
             sw.Dispose();
             sw.Close();
+            sw = null;
         }
     }
 }

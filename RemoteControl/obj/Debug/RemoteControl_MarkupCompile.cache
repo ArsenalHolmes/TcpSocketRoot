@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\RemoteControl\RemoteControl\obj\Debug\
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\
 RemoteControl
 none
 false
 DEBUG;TRACE
-D:\RemoteControl\RemoteControl\App.xaml
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\App.xaml
 2-1318374022
 
 71520389059
-17-680720105
+171015233065
 ClientControl.xaml;MainWindow.xaml;
 
 False
