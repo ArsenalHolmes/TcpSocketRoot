@@ -112,6 +112,7 @@ namespace TcpServerRoot
                 while (MainThreadFunctionQueue.Count > 0)
                 {
                     MainThreadFunctionQueue.Dequeue()();
+                    
                 }
             }
             catch (Exception e)

@@ -19,19 +19,19 @@ public class LogManger
         }
     }
     static LogManger instance;
-    string LogPath;
+    public string LogPath { get; private set; }
     string selfName;
-    public LogManger(ILog log, string LogPath = "",string selfName="",int maxLength=5*1024*1024)
+    public LogManger(ILog log, string LogDirPath = "",string LogFileName="",bool isShowData=true,string selfName="",int maxLength=5*1024*1024)
     {
         instance = this;
         this.log = log;
-        this.LogPath = LogPath;
+        this.LogPath = string.Format("{0}/{1}_{2}_{3}_{4}", LogDirPath, DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, LogFileName);// LogPath;
         this.selfName = selfName;
         if (this.selfName=="")
         {
             this.selfName= Environment.MachineName;
         }
-        if (LogPath != "")
+        if (LogPath != ""&&LogFileName!="")
         {
             if (File.Exists(LogPath))
             {
@@ -39,54 +39,52 @@ public class LogManger
                 if (fi.Length > maxLength)//5M
                 {
                     File.Delete(LogPath);
+                    sw = File.CreateText(LogPath);
                 }
+                sw = new StreamWriter(LogPath, true, Encoding.UTF8);
             }
             else
             {
-                File.CreateText(LogPath);
+                sw  = File.CreateText(LogPath);
             }
+            WriteLog("=====" + DateTime.Now.ToLocalTime().ToString() + "=====");
 
 
-            try
-            {
-                sw = new StreamWriter(LogPath, true, Encoding.UTF8);
-                WriteLog("=====" + DateTime.Now.ToLocalTime().ToString() + "=====");
-
-            }
-            catch (Exception e)
-            {
-                sw = null;
-            }
-         
 
         }
     }
 
-    public void Info(object msg)
+    public void Info(object msg,bool isPrint=true)
     {
-        LogItem item = new LogItem(msg, selfName, MsgType.Error);
-        if (log != null)
+        LogItem item = new LogItem(msg, selfName, MsgType.Info);
+
+        if (log != null && isPrint)
         {
             log.Info(item.ToString());
         }
-        WriteLog(item.ToString());
+        HandLogItem(item);
     }
-    public void Warning(object msg)
+
+    public void Warning(object msg, bool isPrint = true)
     {
-        LogItem item = new LogItem(msg, selfName, MsgType.Error);
-        if (log != null)
+        LogItem item = new LogItem(msg, selfName, MsgType.Warning);
+        if (log != null && isPrint)
         {
             log.Warning(item.ToString());
         }
-        WriteLog(item.ToString());
+        HandLogItem(item);
     }
-    public void Error(object msg)
+    public void Error(object msg, bool isPrint = true)
     {
         LogItem item = new LogItem(msg, selfName, MsgType.Error);
-        if (log != null)
+        if (log != null && isPrint)
         {
             log.Error(item.ToString());
         }
+        HandLogItem(item);
+    }
+    void HandLogItem(LogItem item)
+    {
         WriteLog(item.ToString());
     }
 

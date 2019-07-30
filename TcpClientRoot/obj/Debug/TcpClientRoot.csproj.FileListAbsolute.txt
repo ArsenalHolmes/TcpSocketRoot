@@ -1,0 +1,8 @@
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\bin\Debug\TcpClientRoot.dll
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\bin\Debug\TcpClientRoot.pdb
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\bin\Debug\LoggingSystem.dll
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\bin\Debug\LoggingSystem.pdb
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\obj\Debug\TcpClientRoot.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\obj\Debug\TcpClientRoot.csproj.CopyComplete
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\obj\Debug\TcpClientRoot.dll
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\obj\Debug\TcpClientRoot.pdb

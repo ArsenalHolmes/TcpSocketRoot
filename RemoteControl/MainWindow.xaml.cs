@@ -42,6 +42,7 @@ namespace RemoteControl
         {
 
             instances = this;
+            //new LogManger(new LogClass(),)
             this.Closed += CloseEvent;
             InitializeComponent();
             server = new ServerManger();
@@ -118,7 +119,12 @@ namespace RemoteControl
 
         private void ClientBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+
             ModelItem mi = (ModelItem)clientBox.SelectedValue;
+            if (ControlDic.ContainsKey(mi.Client))
+            {
+                return;
+            }
             ShowControl(mi.Client);
         }
 

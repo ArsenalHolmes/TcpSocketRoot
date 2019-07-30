@@ -4,6 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Input;
 using TcpClientRoot;
 using WindowsInput;
@@ -18,7 +19,7 @@ namespace StartTool
         public ClientManger(string ip,int port)
         {
             //new LogManger(new LogClass(), DateTime.Now.ToShortDateString().ToString() + "_log.txt");
-            new LogManger(new LogClass(), string.Format("{0}_{1}_{2}_log.txt", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day));
+            new LogManger(new LogClass(), AppDomain.CurrentDomain.BaseDirectory,"log.txt");
             instaces = this;
             ToolClass.GetDataPack = GetPack;
             ToolClass.msgArrLen = 102400;

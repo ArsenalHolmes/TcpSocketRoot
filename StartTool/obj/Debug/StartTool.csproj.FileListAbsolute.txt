@@ -34,7 +34,6 @@ C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\bin\Debug\Logg
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\bin\Debug\TcpClientRoot.pdb
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\bin\Debug\WindowsInput.pdb
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\bin\Debug\WindowsInput.xml
-C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\obj\Debug\StartTool.csprojAssemblyReference.cache
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\obj\Debug\MainWindow.g.cs
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\obj\Debug\App.g.cs
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\obj\Debug\StartTool_MarkupCompile.cache

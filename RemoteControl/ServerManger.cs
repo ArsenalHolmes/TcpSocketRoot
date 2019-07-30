@@ -16,7 +16,7 @@ namespace RemoteControl
         public ServerManger()
         {
             instances = this;
-            new LogManger(new LogClass(),string.Format("{0}_{1}_{2}_log.txt", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day));
+            new LogManger(new LogClass(), AppDomain.CurrentDomain.BaseDirectory,"log.txt");
 
             ToolClass.GetDataPack = GetPack;
             ToolClass.msgArrLen = 102400;
@@ -92,7 +92,6 @@ namespace RemoteControl
     {
         public void AcceptFailEvent(TcpServer bs, TcpClient bc)
         {
-
             LogManger.Instance.Info("连接失败"+bc.GetEndPoint);
         }
 

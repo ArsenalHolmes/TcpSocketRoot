@@ -35,9 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LoggingSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LoggingSystem\bin\Debug\netstandard2.0\LoggingSystem.dll</HintPath>
+    <Reference Include="LoggingSystem">
+      <HintPath>..\TcpServerRoot\bin\Debug\LoggingSystem.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -51,8 +50,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="TcpServerRoot">
-      <HintPath>..\TcpServerRoot\bin\Debug\netstandard2.0\TcpServerRoot.dll</HintPath>
+    <Reference Include="TcpServerRoot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TcpServerRoot\bin\Debug\TcpServerRoot.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />

@@ -38,7 +38,7 @@
   <ItemGroup>
     <Reference Include="LoggingSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LoggingSystem\bin\Debug\netstandard2.0\LoggingSystem.dll</HintPath>
+      <HintPath>..\LoggingSystem\bin\Debug\LoggingSystem.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>C:\Users\Administrator\Desktop\Bin\net45\Newtonsoft.Json.dll</HintPath>
@@ -56,7 +56,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="TcpClientRoot">
-      <HintPath>..\TcpClientRoot\bin\Debug\netstandard2.0\TcpClientRoot.dll</HintPath>
+      <HintPath>..\TcpClientRoot\bin\Debug\TcpClientRoot.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />

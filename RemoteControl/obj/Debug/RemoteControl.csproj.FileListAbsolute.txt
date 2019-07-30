@@ -49,7 +49,6 @@ C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\bin\Debug\
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\bin\Debug\TcpServerRoot.dll
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\bin\Debug\LoggingSystem.pdb
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\bin\Debug\TcpServerRoot.pdb
-C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\RemoteControl.csprojAssemblyReference.cache
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\ClientControl.g.cs
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\MainWindow.g.cs
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\App.g.cs

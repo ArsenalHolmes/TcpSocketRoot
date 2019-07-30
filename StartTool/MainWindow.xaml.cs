@@ -85,7 +85,7 @@ namespace StartTool
             }
         }
 
-        string IP = "192.168.5.102";
+        string IP = "127.0.0.1";
         string port = "54321";
 
         private new void KeyDownEvent(object sender, KeyEventArgs e)
