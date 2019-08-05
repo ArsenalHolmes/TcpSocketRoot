@@ -56,40 +56,39 @@ public class LogManger
 
     public void Info(object msg,bool isPrint=true)
     {
-        LogItem item = new LogItem(msg, selfName, MsgType.Info);
-
         if (log != null && isPrint)
         {
-            log.Info(item.ToString());
+            log.Info(msg);
         }
-        HandLogItem(item);
+        HandLogItem(msg, MsgType.Info);
     }
 
     public void Warning(object msg, bool isPrint = true)
     {
-        LogItem item = new LogItem(msg, selfName, MsgType.Warning);
         if (log != null && isPrint)
         {
-            log.Warning(item.ToString());
+            log.Warning(msg);
         }
-        HandLogItem(item);
+        HandLogItem(msg, MsgType.Warning);
     }
     public void Error(object msg, bool isPrint = true)
     {
-        LogItem item = new LogItem(msg, selfName, MsgType.Error);
         if (log != null && isPrint)
         {
-            log.Error(item.ToString());
+            log.Error(msg);
         }
-        HandLogItem(item);
+        HandLogItem(msg,MsgType.Error);
     }
-    void HandLogItem(LogItem item)
+
+    void HandLogItem(object msg,MsgType mt)
     {
+        LogItem item = new LogItem(msg, selfName, MsgType.Error);
         WriteLog(item.ToString());
     }
 
+
     StreamWriter sw;
-    void WriteLog(string msg)
+    public void WriteLog(string msg)
     {
         try
         {
@@ -155,8 +154,8 @@ public struct LogItem
 
 public interface ILog
 {
-    void Info(string msg);
-    void Warning(string msg);
-    void Error(string msg);
+    void Info(object msg);
+    void Warning(object msg);
+    void Error(object msg);
 }
 

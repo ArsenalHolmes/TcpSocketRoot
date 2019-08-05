@@ -27,6 +27,14 @@ namespace TcpServerRoot
 
         List<TcpClient> ClientList = new List<TcpClient>();
 
+        public int ClientCount
+        {
+            get
+            {
+                return ClientList.Count;
+            }
+        }
+
         public void AddClient(TcpClient client)
         {
             lock (ClientList)
@@ -91,7 +99,6 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                //ToolClass.printInfo(e);
                 LogManger.Instance.Error(e);
                 if (socketEvent != null) socketEvent.AcceptFailEvent(this, tc);
             }
