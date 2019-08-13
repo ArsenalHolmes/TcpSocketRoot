@@ -52,6 +52,7 @@ namespace RemoteControl
             rushNumber.Text = RushNumber.ToString();
 
             thread = new Thread(ThreadFunction);
+            thread.IsBackground = true;
             thread.Start();
 
         }

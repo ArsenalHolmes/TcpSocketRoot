@@ -3,4 +3,3 @@ C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LoggingSystem\bin\Debug\
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LoggingSystem\obj\Debug\LoggingSystem.csproj.CoreCompileInputs.cache
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LoggingSystem\obj\Debug\LoggingSystem.dll
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LoggingSystem\obj\Debug\LoggingSystem.pdb
-C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LoggingSystem\obj\Debug\LoggingSystem.csprojAssemblyReference.cache

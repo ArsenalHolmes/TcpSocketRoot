@@ -21,7 +21,12 @@ namespace RemoteControl
             ToolClass.GetDataPack = GetPack;
             ToolClass.msgArrLen = 102400;
             bc = new TcpServer(new socketEvent());
-            bc.InitServer("0.0.0.0",54321);
+            bc.InitServer("0.0.0.0",55555);
+        }
+
+        public void test(string s)
+        {
+            Console.WriteLine(s+"--心跳包");
         }
 
 
@@ -61,6 +66,7 @@ namespace RemoteControl
 
         public override void UserMsgRead(DataPack dp)
         {
+            string time = dp.ReadString();
             short s = dp.ReadShort();
             MsgEnum me = (MsgEnum)s;
             //Console.WriteLine(dp.Msg.Length);
@@ -98,6 +104,7 @@ namespace RemoteControl
         public void AcceptSuccessEvent(TcpServer bs, TcpClient bc)
         {
             LogManger.Instance.Info("连接成功"+bc.GetEndPoint);
+            bc.HeartEvent = ServerManger.instances.test;
 
         }
 
@@ -147,20 +154,22 @@ namespace RemoteControl
 
     public class LogClass : ILog
     {
-        public void Error(string msg)
+
+        public void Error(object msg)
         {
-            Console.WriteLine("error:"+msg);
+            Console.WriteLine("error:" + msg);
         }
 
-        public void Info(string msg)
+
+        public void Info(object msg)
         {
-            Console.WriteLine("info:"+msg);
+            Console.WriteLine("info:" + msg);
         }
 
-        public void Warning(string msg)
+
+        public void Warning(object msg)
         {
-            //throw new NotImplementedException();
-            Console.WriteLine("warning:"+msg);
+            Console.WriteLine("warning:" + msg);
         }
     }
 }

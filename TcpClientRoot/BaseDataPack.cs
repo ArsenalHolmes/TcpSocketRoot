@@ -56,7 +56,10 @@ namespace TcpClientRoot
             switch (mt)
             {
                 case MessageType.System:
-                    SystemMsgRead(dp);
+                    //SystemMsgRead(dp);
+                    MainThreadFunctionQueue.Enqueue(() => {
+                        SystemMsgRead(dp);
+                    });
                     break;
                 case MessageType.Normal:
                     MainThreadFunctionQueue.Enqueue(() => {
@@ -90,11 +93,12 @@ namespace TcpClientRoot
         /// <param name="red"></param>
         public void SystemMsgRead(DataPack dp)
         {
+            string time = dp.ReadString();
             SystemMessageType smt = (SystemMessageType)dp.ReadShort();
             switch (smt)
             {
                 case SystemMessageType.HeartBeat:
-                    //bc.ReceiveHeart();
+                    bc.ReceiveHeart(time);
                     break;
             }
         }
@@ -179,6 +183,27 @@ namespace TcpClientRoot
             }
 
         }
+
+        //头部插入string
+        public DataPack InsertHead(string s)
+        {
+            byte[] arr = Encoding.UTF8.GetBytes(s);
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (BinaryWriter bw = new BinaryWriter(ms))
+                {
+                    int len = arr.Length;
+                    bw.Write(len);
+                    bw.Write(arr);
+
+                    bw.Write(Msg);
+                    Msg = ms.ToArray();
+                    return this;
+                }
+            }
+        }
+
 
         #region 读写 5个类型 string float short int bool DataPack byteArr
         public string ReadString()

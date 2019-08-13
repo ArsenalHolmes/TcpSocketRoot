@@ -18,13 +18,17 @@ namespace StartTool
         public static ClientManger instaces;
         public ClientManger(string ip,int port)
         {
-            //new LogManger(new LogClass(), DateTime.Now.ToShortDateString().ToString() + "_log.txt");
             new LogManger(new LogClass(), AppDomain.CurrentDomain.BaseDirectory,"log.txt");
             instaces = this;
             ToolClass.GetDataPack = GetPack;
             ToolClass.msgArrLen = 102400;
             bc = new TcpClient(new socketEvent());
             bc.Connect(ip, port);
+        }
+
+        public void CloseEvent()
+        {
+            bc.CloseSocket();
         }
 
         private BaseDataPack GetPack()
@@ -37,7 +41,7 @@ namespace StartTool
             DataPack dp = new DataPack();
             dp += (short)MsgEnum.DesktopImg;
             dp += GetDesktopScreenShot();
-            bc.sendMsg(dp);
+            bc.SendMsg(dp);
         }
 
         public void HandleMouseClick(DataPack dp)
@@ -232,7 +236,7 @@ namespace StartTool
             Console.WriteLine("连接成功");
             DataPack dp = new DataPack();
             dp = dp + (short)MsgEnum.ComputerName + System.Net.Dns.GetHostEntry("localhost").HostName;
-            bc.sendMsg(dp);
+            bc.SendMsg(dp);
         }
 
         public void ReceiveFailEvent(TcpClient bc)
@@ -283,6 +287,8 @@ namespace StartTool
 
         public override void UserMsgRead(DataPack dp)
         {
+            string s = dp.ReadString();
+            Console.WriteLine(s);
             MsgEnum me = (MsgEnum)dp.ReadShort();
             switch (me)
             {
@@ -311,19 +317,21 @@ namespace StartTool
 
     public class LogClass : ILog
     {
-        public void Error(string msg)
+
+        public void Error(object msg)
         {
             Console.WriteLine("error:" + msg);
         }
 
-        public void Info(string msg)
+
+        public void Info(object msg)
         {
             Console.WriteLine("info:" + msg);
         }
 
-        public void Warning(string msg)
+
+        public void Warning(object msg)
         {
-            //throw new NotImplementedException();
             Console.WriteLine("warning:" + msg);
         }
     }

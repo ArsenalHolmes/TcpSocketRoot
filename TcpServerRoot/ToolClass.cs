@@ -42,8 +42,9 @@ namespace TcpServerRoot
 
         public static int heartIntervalTime=5;//心跳间隔时间
         public static int MaxNumberHeartFail=5;
+        public static bool SendHeaderPack = true;//发送心跳包
 
-        public static Action<object> outPutInfo;
+        //public static Action<object> outPutInfo;
 
 
 

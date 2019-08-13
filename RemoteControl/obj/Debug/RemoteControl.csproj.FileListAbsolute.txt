@@ -63,3 +63,4 @@ C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\RemoteControl.csproj.CopyComplete
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\RemoteControl.exe
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\RemoteControl.pdb
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\RemoteControl.csprojAssemblyReference.cache

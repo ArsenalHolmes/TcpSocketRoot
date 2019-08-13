@@ -39,9 +39,11 @@ namespace StartTool
                 StartFunction();
             }
             mouseThread = new Thread(startGetMouse);
+            mouseThread.IsBackground = true;
             mouseThread.Start();
 
             socketThread = new Thread(socketThreadFunction);
+            socketThread.IsBackground = true;
             socketThread.Start();
 
             this.KeyDown += KeyDownEvent;
@@ -375,7 +377,9 @@ namespace StartTool
             {
                 FilePath.Content = FilePath.Content + "没找到了intPtr";
             }
-            new Thread(TopThreadFunction).Start();
+            Thread t2 = new Thread(TopThreadFunction);
+            t2.IsBackground = true;
+            t2.Start();
         }
 
         /// <summary>
@@ -420,8 +424,9 @@ namespace StartTool
         {
             SavaSetting();
             isExit = true;
-            cm.bc.CloseSocket();
+            cm.CloseEvent();
             LogManger.Instance.SaveLog();
+
         }
 
         #region 拖入程序。得到路径

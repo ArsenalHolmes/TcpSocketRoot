@@ -33,24 +33,9 @@ public class LogManger
         }
         if (LogPath != ""&&LogFileName!="")
         {
-            if (File.Exists(LogPath))
-            {
-                FileInfo fi = new FileInfo(LogPath);
-                if (fi.Length > maxLength)//5M
-                {
-                    File.Delete(LogPath);
-                    sw = File.CreateText(LogPath);
-                }
-                sw = new StreamWriter(LogPath, true, Encoding.UTF8);
-            }
-            else
-            {
-                sw  = File.CreateText(LogPath);
-            }
+            fs = new FileStream(LogPath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            sw = new StreamWriter(fs,Encoding.UTF8);
             WriteLog("=====" + DateTime.Now.ToLocalTime().ToString() + "=====");
-
-
-
         }
     }
 
@@ -88,6 +73,7 @@ public class LogManger
 
 
     StreamWriter sw;
+    FileStream fs;
     public void WriteLog(string msg)
     {
         try
@@ -107,9 +93,13 @@ public class LogManger
     {
         if (sw != null)
         {
+            fs.Flush();
+            fs.Close();
+            fs.Dispose();
             sw.Dispose();
             sw.Close();
             sw = null;
+            fs = null;
         }
     }
 }

@@ -42,6 +42,7 @@ namespace TcpClientRoot
             this.socketEvent = socketEvent;
             dataPack = ToolClass.GetDataPack();
             ConnectThread = new Thread(ConnectThreadFunc);
+            ConnectThread.IsBackground = true;
             ConnectThread.Start();
         }
 
@@ -65,6 +66,7 @@ namespace TcpClientRoot
             }
         }
 
+        Thread m_HeaderThread;
 
         IPEndPoint point;
         public void Connect(string ip, int port)
@@ -89,12 +91,18 @@ namespace TcpClientRoot
             }
             try
             {
-
                 client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 client.Connect(point);
                 client.BeginReceive(msgArr, 0, ToolClass.msgArrLen, SocketFlags.None, ReceiveCallBack, null);
                 isConnect = true;
                 if (socketEvent != null) socketEvent.ConnectSuccess(this);
+                if (ToolClass.SendHeaderPack)
+                {
+                    m_HeaderThread = new Thread(HeaderThread);
+                    m_HeaderThread.IsBackground = true;
+                    m_HeaderThread.Start();
+                }
+
             }
             catch (Exception e)
             {
@@ -105,7 +113,14 @@ namespace TcpClientRoot
             }
         }
 
-        public bool sendMsg(DataPack dp, MessageType mt = MessageType.Normal)
+
+        public Action<string> HeartEvent;
+        public void ReceiveHeart(string time)
+        {
+            if (HeartEvent != null) { HeartEvent(time); }
+        }
+
+        public bool SendMsg(DataPack dp, MessageType mt = MessageType.Normal)
         {
 
             if (isConnect==false)
@@ -115,6 +130,7 @@ namespace TcpClientRoot
 
             try
             {
+                dp.InsertHead(DateTime.Now.ToString("hh:mm:ss"));
                 dp.InsertHead((short)mt);
                 byte[] msg = dp.HaveLengthMsgArr;
                 client.SendBufferSize = msg.Length + 5;
@@ -186,23 +202,46 @@ namespace TcpClientRoot
 
         private void Disconnect()
         {
-            if (client != null)
+            try
             {
-                if (client.Connected)
+                if (client != null)
                 {
-                    client.Disconnect(true);
+                    if (client.Connected)
+                    {
+                        client.Disconnect(true);
+                    }
+                    client = null;
                 }
-
-                client = null;
+                socketEvent.ClientDisconnect(this);
+                isConnect = false;
             }
-            socketEvent.ClientDisconnect(this);
-            isConnect = false;
+            catch (Exception e)
+            {
+                LogManger.Instance.Error(e);
+            }
+            finally
+            {
+                isConnect = false;
+                m_HeaderThread.Abort();
+            }
+
         }
 
         public void CloseSocket()
         {
             Disconnect();
             isEnd = true;
+        }
+
+        private void HeaderThread()
+        {
+            while (isConnect==true)
+            {
+                Thread.Sleep(1000 * ToolClass.heartIntervalTime);
+                DataPack dp = new DataPack();
+                dp = dp + (short)SystemMessageType.HeartBeat;
+                SendMsg(dp, MessageType.System);
+            }
         }
     }
 }

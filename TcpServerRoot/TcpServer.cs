@@ -78,7 +78,6 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                //ToolClass.printInfo(e);
                 LogManger.Instance.Error(e);
                 if (socketEvent != null) socketEvent.InitFailEvent(this);
             }
@@ -105,18 +104,6 @@ namespace TcpServerRoot
             finally
             {
                 server.BeginAccept(AcceptCallBack, null);
-            }
-        }
-
-        void HeadThread()
-        {
-            Thread.Sleep(ToolClass.heartIntervalTime * 1000);
-            lock (ClientList)
-            {
-                //foreach (var item in ClientList)
-                //{
-                    
-                //}
             }
         }
 

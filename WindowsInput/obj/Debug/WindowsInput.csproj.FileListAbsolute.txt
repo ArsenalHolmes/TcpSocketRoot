@@ -12,3 +12,10 @@ C:\Users\admin\source\repos\RemoteControl\WindowsInput\obj\Debug\WindowsInput.cs
 C:\Users\admin\source\repos\RemoteControl\WindowsInput\obj\Debug\WindowsInput.csproj.CoreCompileInputs.cache
 C:\Users\admin\source\repos\RemoteControl\WindowsInput\obj\Debug\WindowsInput.dll
 C:\Users\admin\source\repos\RemoteControl\WindowsInput\obj\Debug\WindowsInput.pdb
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\WindowsInput\bin\Debug\WindowsInput.xml
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\WindowsInput\bin\Debug\WindowsInput.dll
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\WindowsInput\bin\Debug\WindowsInput.pdb
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\WindowsInput\obj\Debug\WindowsInput.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\WindowsInput\obj\Debug\WindowsInput.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\WindowsInput\obj\Debug\WindowsInput.dll
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\WindowsInput\obj\Debug\WindowsInput.pdb

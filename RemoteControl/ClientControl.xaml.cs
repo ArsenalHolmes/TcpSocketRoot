@@ -33,6 +33,7 @@ namespace RemoteControl
             InitializeComponent();
 
             t = new Thread(DesktopThread);
+            t.IsBackground = true;
             t.Start();
 
             this.Closed += Window_Closed;

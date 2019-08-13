@@ -6,3 +6,4 @@ C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\obj\Debug\
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\obj\Debug\TcpClientRoot.csproj.CopyComplete
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\obj\Debug\TcpClientRoot.dll
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\obj\Debug\TcpClientRoot.pdb
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\obj\Debug\TcpClientRoot.csprojAssemblyReference.cache

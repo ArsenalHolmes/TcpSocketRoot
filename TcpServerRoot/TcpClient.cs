@@ -35,6 +35,13 @@ namespace TcpServerRoot
             DataPack.setTcpClient(this);
             msgArr = new byte[ToolClass.msgArrLen];
             this.socketEvent = socketEvent;
+
+            if (ToolClass.SendHeaderPack)
+            {
+                m_HeaderThread = new Thread(HeaderThread);
+                m_HeaderThread.IsBackground = true;
+                m_HeaderThread.Start();
+            }
         }
 
 
@@ -45,6 +52,7 @@ namespace TcpServerRoot
             {
                 if (client!=null)
                 {
+                    dp.InsertHead(DateTime.Now.ToString("hh:mm:ss"));
                     dp.InsertHead((short)mt);
                     byte[] msg = dp.HaveLengthMsgArr;
                     client.SendBufferSize = msg.Length + 5;
@@ -56,7 +64,6 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                //ToolClass.printInfo(e);
                 LogManger.Instance.Error(e);
                 if (socketEvent != null) socketEvent.SendFailEvent(this,dp.Msg);
                 Disconnect();
@@ -68,11 +75,20 @@ namespace TcpServerRoot
 
         public void BeginReceive()
         {
-            if (client == null)
+            try
             {
-                throw new SocketException("开始接受消息client为空");
+                if (client == null)
+                {
+                    throw new SocketException("开始接受消息client为空");
+                }
+                client.BeginReceive(msgArr, 0, msgArr.Length, SocketFlags.None, ReceiveCallBack, null);
             }
-            client.BeginReceive(msgArr, 0, msgArr.Length, SocketFlags.None, ReceiveCallBack, null);
+            catch (Exception e)
+            {
+                LogManger.Instance.Error(e);
+                Disconnect();
+            }
+
         }
 
         private void ReceiveCallBack(IAsyncResult ar)
@@ -94,7 +110,6 @@ namespace TcpServerRoot
             }
             catch (Exception e)
             {
-                //ToolClass.printInfo(e);
                 LogManger.Instance.Error(e);
                 isError = true;
                 if (socketEvent != null) socketEvent.ReceiveFailEvent(this);
@@ -130,31 +145,27 @@ namespace TcpServerRoot
             catch (Exception e)
             {
                 LogManger.Instance.Error(e);
-                throw;
             }
 
         
         }
 
-        int NumberOfHeartFail;//心跳失效次数
-        public void SendHeart()
+        private void HeaderThread()
         {
-
-            if (client==null||NumberOfHeartFail>=ToolClass.MaxNumberHeartFail)
+            while (true)
             {
-                Disconnect();
-                return;
+                Thread.Sleep(1000 * ToolClass.heartIntervalTime);
+                DataPack dp = new DataPack();
+                dp = dp + (short)SystemMessageType.HeartBeat;
+                SendMsg(dp, MessageType.System);
             }
-
-            DataPack dp = new DataPack();
-            dp += (short)SystemMessageType.HeartBeat;
-            SendMsg(dp, MessageType.System);
-            NumberOfHeartFail++;
         }
+        Thread m_HeaderThread;
 
-        public void ReceiveHeart()
+        public Action<string> HeartEvent;
+        public void ReceiveHeart(string time)
         {
-            //NumberOfHeadFail = 0;
+            if (HeartEvent != null) { HeartEvent(time); }
         }
     }
 }
