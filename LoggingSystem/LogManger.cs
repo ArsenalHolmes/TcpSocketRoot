@@ -93,13 +93,21 @@ public class LogManger
     {
         if (sw != null)
         {
-            fs.Flush();
-            fs.Close();
-            fs.Dispose();
-            sw.Dispose();
-            sw.Close();
-            sw = null;
-            fs = null;
+            try
+            {
+                fs.Flush();
+                fs.Close();
+                fs.Dispose();
+                sw.Dispose();
+                sw.Close();
+                sw = null;
+                fs = null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
         }
     }
 }

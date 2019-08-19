@@ -176,7 +176,12 @@ namespace RemoteControl
 
         public override string ToString()
         {
-            return name+"-"+client.GetEndPoint.ToString();
+            if (client.GetEndPoint!=null)
+            {
+                return name + "-" + client.GetEndPoint.ToString();
+            }
+            return name;
+           
         }
 
         public string Name { get => name; set => name = value; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessageEncoding;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -45,6 +46,11 @@ namespace RemoteControl
             this.DesktopImg.MouseMove += ImgMouseMoveEvent;
 
             bar.Visibility = Visibility.Hidden;
+
+
+            //CreatePack dp = new CreatePack();
+            //dp += (short)MsgEnum.DesktopImg;
+            //bool b = client.SendMsg(dp);
         }
 
         private void ClientControl_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -52,7 +58,8 @@ namespace RemoteControl
             if (e.KeyStates == Keyboard.GetKeyStates(Key.F4) && Keyboard.Modifiers == ModifierKeys.Alt)
             {
                 e.Handled = true;
-                DataPack spe = new DataPack();
+                //DataPack spe = new DataPack();
+                CreatePack spe = new CreatePack();
                 spe = spe + (short)MsgEnum.SpeKeyBoard + (short)KeyBoardMsg.AltF4;
                 client.SendMsg(spe);
 
@@ -61,7 +68,8 @@ namespace RemoteControl
             if (Keyboard.Modifiers == ModifierKeys.Alt && e.KeyStates == Keyboard.GetKeyStates(Key.Tab))
             {
                 e.Handled = true;
-                DataPack spe = new DataPack();
+                //DataPack spe = new DataPack();
+                CreatePack spe = new CreatePack();
                 spe = spe + (short)MsgEnum.SpeKeyBoard + (short)KeyBoardMsg.AltTab;
                 client.SendMsg(spe);
             }
@@ -69,14 +77,15 @@ namespace RemoteControl
             if (Keyboard.Modifiers == ModifierKeys.Windows && e.KeyStates == Keyboard.GetKeyStates(Key.D))
             {
                 e.Handled = true;
-                DataPack spe = new DataPack();
+                //DataPack spe = new DataPack();
+                CreatePack spe = new CreatePack();
                 spe = spe + (short)MsgEnum.SpeKeyBoard + (short)KeyBoardMsg.WinD;
                 client.SendMsg(spe);
             }
 
 
             short s = (short)e.Key;
-            DataPack dp = new DataPack();
+            CreatePack dp = new CreatePack();
             dp = dp + (short)MsgEnum.KeyBoard + s;
             client.SendMsg(dp);
         }
@@ -112,9 +121,11 @@ namespace RemoteControl
                 fs.Read(arr, 0, tempLen);
                 endIndex = (int)fs.Position;
 
-                DataPack dp = new DataPack();
+                //DataPack dp = new DataPack();
+                CreatePack dp = new CreatePack();
+                // 消息头 文件名  开始位置 结束位置 总长度 内容
                 dp = dp + (short)MsgEnum.SendFiles + fullName + startIndex + endIndex + len;
-                dp.WriteByteArr(arr);
+                dp.Write(arr);
 
 
                 //bar.Dispatcher.BeginInvoke(new ProgressBarSetter(SetProgressBar), ((float)endIndex / (float)len) * 100f);
@@ -144,7 +155,8 @@ namespace RemoteControl
             double y = p.Y / hig;
 
 
-            DataPack dp = new DataPack();
+            //DataPack dp = new DataPack();
+            CreatePack dp = new CreatePack();
             dp += (short)MsgEnum.MouseMove;
             dp += (float)x;
             dp += (float)y;
@@ -156,7 +168,8 @@ namespace RemoteControl
             
             if (e.LeftButton == MouseButtonState.Released)
             {
-                DataPack dp = new DataPack();
+                //DataPack dp = new DataPack();
+                CreatePack dp = new CreatePack();
                 dp += (short)MsgEnum.MouseClick;
                 dp += (short)MouseEventFlag.LeftUp;
                 client.SendMsg(dp);
@@ -176,7 +189,8 @@ namespace RemoteControl
         {
             if (e.LeftButton==MouseButtonState.Pressed)
             {
-                DataPack dp = new DataPack();
+                //DataPack dp = new DataPack();
+                CreatePack dp = new CreatePack();
                 dp += (short)MsgEnum.MouseClick;
                 dp += (short)MouseEventFlag.LeftDown;
                 client.SendMsg(dp);
@@ -184,14 +198,16 @@ namespace RemoteControl
             }
             else if (e.RightButton==MouseButtonState.Pressed)
             {
-                DataPack dp = new DataPack();
+                //DataPack dp = new DataPack();
+                CreatePack dp = new CreatePack();
                 dp += (short)MsgEnum.MouseClick;
                 dp += (short)MouseEventFlag.RightDown;
                 client.SendMsg(dp);
                 //LogManger.Instance.Info("右键按下");
 
                 Thread.Sleep(10);
-                DataPack dp2 = new DataPack();
+                //DataPack dp2 = new DataPack();
+                CreatePack dp2 = new CreatePack();
                 dp2 += (short)MsgEnum.MouseClick;
                 dp2 += (short)MouseEventFlag.RightUp;
                 //LogManger.Instance.Info("右键抬起");
@@ -230,12 +246,13 @@ namespace RemoteControl
             while (isExit == false)
             {
                 //Thread.Sleep(MainWindow.instances.RushNumber);
-                Thread.Sleep(100);
+                Thread.Sleep(1000);
                 if (client != null)
                 {
-                    DataPack dp = new DataPack();
+                    CreatePack dp = new CreatePack();
                     dp += (short)MsgEnum.DesktopImg;
-                    client.SendMsg(dp);
+                    bool b = client.SendMsg(dp);
+                    Console.WriteLine(b+"发送桌面请求成功");
                 }
             }
         }

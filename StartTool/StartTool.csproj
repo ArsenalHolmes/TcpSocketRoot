@@ -61,7 +61,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsInput">
+    <Reference Include="WindowsInput, Version=0.2.0.0, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WindowsInput\bin\Debug\WindowsInput.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -110,6 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MessageEncoding\MessageEncoding.csproj">
+      <Project>{6763F228-987E-49A9-B6FD-E6FE81F1E996}</Project>
+      <Name>MessageEncoding</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

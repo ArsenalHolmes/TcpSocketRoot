@@ -1,0 +1,5 @@
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\MessageEncoding\obj\Debug\MessageEncoding.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\MessageEncoding\bin\Debug\MessageEncoding.dll
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\MessageEncoding\bin\Debug\MessageEncoding.pdb
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\MessageEncoding\obj\Debug\MessageEncoding.dll
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\MessageEncoding\obj\Debug\MessageEncoding.pdb

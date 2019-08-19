@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessageEncoding;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace RemoteControl
 
             ToolClass.GetDataPack = GetPack;
             ToolClass.msgArrLen = 102400;
+            ToolClass.SendHeaderPack = false;
             bc = new TcpServer(new socketEvent());
             bc.InitServer("0.0.0.0",55555);
         }
@@ -64,29 +66,29 @@ namespace RemoteControl
 
         }
 
-        public override void UserMsgRead(DataPack dp)
+        public override void UserMsgRead(ParsePack dp)
         {
-            string time = dp.ReadString();
-            short s = dp.ReadShort();
+            string time = dp.getString();
+            short s = dp.getShort();
             MsgEnum me = (MsgEnum)s;
-            //Console.WriteLine(dp.Msg.Length);
             switch (me)
             {
                 case MsgEnum.DesktopImg:
                     if (MainWindow.instances.ControlDic.ContainsKey(bc))
                     {
-                        MainWindow.instances.ControlDic[bc].RushDesktopImg(dp.ReadByteArr());
+                        int len = dp.getInt();
+                        Console.WriteLine(len);
+                        MainWindow.instances.ControlDic[bc].RushDesktopImg(dp.getBytes(len));
                     }
                     break;
                 case MsgEnum.ComputerName:
-                    string n = dp.ReadString();
+                    string n = dp.getString();
                     if (MainWindow.instances.ClientNameDic.ContainsKey(bc)==false)
                     {
                       
                         MainWindow.instances.ClientNameDic.Add(bc, n);
                         MainWindow.instances.RushClientList();
                     }
-                   
                     break;
                 default:
                     break;
@@ -105,7 +107,6 @@ namespace RemoteControl
         {
             LogManger.Instance.Info("连接成功"+bc.GetEndPoint);
             bc.HeartEvent = ServerManger.instances.test;
-
         }
 
         public void ClientDisconnect(TcpServer ts, TcpClient tc)

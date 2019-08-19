@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using MessageEncoding;
 
 namespace TcpServerRoot
 {
@@ -46,18 +47,18 @@ namespace TcpServerRoot
 
 
 
-        public bool SendMsg(DataPack dp, MessageType mt=MessageType.Normal)
+        public bool SendMsg(CreatePack cp, MessageType mt=MessageType.Normal)
         {
             try
             {
                 if (client!=null)
                 {
-                    dp.InsertHead(DateTime.Now.ToString("hh:mm:ss"));
-                    dp.InsertHead((short)mt);
-                    byte[] msg = dp.HaveLengthMsgArr;
+                    cp.Insert(DateTime.Now.ToString("hh:mm:ss"));
+                    cp.Insert((int)mt);
+                    byte[] msg = cp.ToArray();
                     client.SendBufferSize = msg.Length + 5;
                     client.Send(msg);
-                    if (socketEvent != null) socketEvent.SendSuccessEvent(this, dp.Msg);
+                    if (socketEvent != null) socketEvent.SendSuccessEvent(this, msg);
                     return true;
                 }
                 return false;
@@ -65,7 +66,7 @@ namespace TcpServerRoot
             catch (Exception e)
             {
                 LogManger.Instance.Error(e);
-                if (socketEvent != null) socketEvent.SendFailEvent(this,dp.Msg);
+                if (socketEvent != null) socketEvent.SendFailEvent(this,cp.ToArray());
                 Disconnect();
                 return false;
             }
@@ -155,9 +156,9 @@ namespace TcpServerRoot
             while (true)
             {
                 Thread.Sleep(1000 * ToolClass.heartIntervalTime);
-                DataPack dp = new DataPack();
-                dp = dp + (short)SystemMessageType.HeartBeat;
-                SendMsg(dp, MessageType.System);
+                CreatePack cp = new CreatePack();
+                cp = cp + (int)SystemMessageType.HeartBeat;
+                SendMsg(cp, MessageType.System);
             }
         }
         Thread m_HeaderThread;

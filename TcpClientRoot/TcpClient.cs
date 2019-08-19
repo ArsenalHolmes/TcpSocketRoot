@@ -4,6 +4,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using MessageEncoding;
 
 namespace TcpClientRoot
 {
@@ -120,7 +121,7 @@ namespace TcpClientRoot
             if (HeartEvent != null) { HeartEvent(time); }
         }
 
-        public bool SendMsg(DataPack dp, MessageType mt = MessageType.Normal)
+        public bool SendMsg(CreatePack dp, MessageType mt = MessageType.Normal)
         {
 
             if (isConnect==false)
@@ -128,22 +129,26 @@ namespace TcpClientRoot
                 Connect();
             }
 
+
             try
             {
-                dp.InsertHead(DateTime.Now.ToString("hh:mm:ss"));
-                dp.InsertHead((short)mt);
-                byte[] msg = dp.HaveLengthMsgArr;
+                dp.Insert(DateTime.Now.ToString("hh:mm:ss"));
+                dp.Insert((int)mt);
+
+
+
+                byte[] msg = dp.ToArray();
                 client.SendBufferSize = msg.Length + 5;
                     
                 client.Send(msg);
-                if (socketEvent != null) socketEvent.SendSuccessEvent(this, dp.Msg);
+                if (socketEvent != null) socketEvent.SendSuccessEvent(this, msg);
                 return true;
             }
             catch (Exception e)
             {
                 LogManger.Instance.Error(e);
                 Disconnect();
-                if (socketEvent != null) socketEvent.SendFailEvent(this, dp.Msg);
+                if (socketEvent != null) socketEvent.SendFailEvent(this, dp.ToArray());
                 return false;
             }
 
@@ -213,7 +218,6 @@ namespace TcpClientRoot
                     client = null;
                 }
                 socketEvent.ClientDisconnect(this);
-                isConnect = false;
             }
             catch (Exception e)
             {
@@ -222,7 +226,11 @@ namespace TcpClientRoot
             finally
             {
                 isConnect = false;
-                m_HeaderThread.Abort();
+                if (m_HeaderThread != null)
+                {
+                    m_HeaderThread.Abort();
+                }
+              
             }
 
         }
@@ -238,8 +246,8 @@ namespace TcpClientRoot
             while (isConnect==true)
             {
                 Thread.Sleep(1000 * ToolClass.heartIntervalTime);
-                DataPack dp = new DataPack();
-                dp = dp + (short)SystemMessageType.HeartBeat;
+                CreatePack dp = new CreatePack();
+                dp = dp + (int)SystemMessageType.HeartBeat;
                 SendMsg(dp, MessageType.System);
             }
         }
