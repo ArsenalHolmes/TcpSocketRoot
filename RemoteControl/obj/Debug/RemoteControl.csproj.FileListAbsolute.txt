@@ -64,3 +64,5 @@ C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\RemoteControl.exe
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\RemoteControl.pdb
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\obj\Debug\RemoteControl.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\bin\Debug\MessageEncoding.dll
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\RemoteControl\bin\Debug\MessageEncoding.pdb

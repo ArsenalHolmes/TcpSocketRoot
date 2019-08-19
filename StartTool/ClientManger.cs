@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessageEncoding;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -38,23 +39,24 @@ namespace StartTool
 
         public void HandleDesktopImg()
         {
-            DataPack dp = new DataPack();
+            CreatePack dp = new CreatePack();
             dp += (short)MsgEnum.DesktopImg;
             dp += GetDesktopScreenShot();
             bc.SendMsg(dp);
+            Console.WriteLine("返回桌面");
         }
 
-        public void HandleMouseClick(DataPack dp)
+        public void HandleMouseClick(ParsePack pp)
         {
 
-            MouseEventFlag flag = (MouseEventFlag)dp.ReadShort();
+            MouseEventFlag flag = (MouseEventFlag)pp.getShort();
             mouse_event(flag, 0, 0, 0, UIntPtr.Zero);
 
         }
-        public void HnadleMouseMove(DataPack dp)
+        public void HnadleMouseMove(ParsePack dp)
         {
-            float t_x = dp.ReadFloat();
-            float t_y = dp.ReadFloat();
+            float t_x = dp.getFloat();
+            float t_y = dp.getFloat();
 
             int x = (int)(1920 * t_x);
             int y = (int)(1080 * t_y);
@@ -97,7 +99,6 @@ namespace StartTool
             Graphics gc = Graphics.FromImage(img);
             gc.CopyFromScreen(new Point(0, 0), new Point(0, 0), new Size(wid, hig));
 
-            //img = resizeImage(img, new Size(1920,1080));
 
             var eps = new EncoderParameters(1);
             var ep = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, Quality);
@@ -108,14 +109,9 @@ namespace StartTool
             {
                 img.Save(ms, jpsEncodeer, eps);
                 arr = ms.ToArray();
-
-                DataPack dp = new DataPack();
-                dp.WriteShort((short)MsgEnum.DesktopImg);
-                dp.WriteByteArr(arr);
             }
             ep.Dispose();
             eps.Dispose();
-            //Console.WriteLine(arr.Length+"--桌面长度");
             return arr;
         }
 
@@ -166,16 +162,16 @@ namespace StartTool
         }
 
         FileStream fs;
-        public void HandleFile(DataPack dp)
+        public void HandleFile(ParsePack dp)
         {
             lock (bc)
             {
-                string full = dp.ReadString();
-                int start = dp.ReadInt();
-                int end = dp.ReadInt();
-                int len = dp.ReadInt();
-                byte[] msg = dp.ReadByteArr();
-
+                string full = dp.getString();
+                int start = dp.getInt();
+                int end = dp.getInt();
+                int len = dp.getInt();
+                byte[] msg = dp.getBytes(len);
+                // 消息头 文件名  开始位置 结束位置 总长度 内容
                 if (start == 0)
                 {
                     string dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
@@ -192,15 +188,15 @@ namespace StartTool
 
         }
 
-        public void HandleKeyBD(DataPack dp)
+        public void HandleKeyBD(ParsePack dp)
         {
-            Key k = (Key)dp.ReadShort();
+            Key k = (Key)dp.getShort();
             Keyboard.Type(k);
         }
 
-        internal void HandleSpeBD(DataPack dp)
+        internal void HandleSpeBD(ParsePack dp)
         {
-            KeyBoardMsg k = (KeyBoardMsg)dp.ReadShort();
+            KeyBoardMsg k = (KeyBoardMsg)dp.getShort();
             InputSimulator sim = new InputSimulator();
             Console.WriteLine(k);
             switch (k)
@@ -234,7 +230,7 @@ namespace StartTool
         public void ConnectSuccess(TcpClient bc)
         {
             Console.WriteLine("连接成功");
-            DataPack dp = new DataPack();
+            CreatePack dp = new CreatePack();
             dp = dp + (short)MsgEnum.ComputerName + System.Net.Dns.GetHostEntry("localhost").HostName;
             bc.SendMsg(dp);
         }
@@ -249,10 +245,19 @@ namespace StartTool
 
         public void SendFailEvent(TcpClient bc, byte[] msg)
         {
+            Console.WriteLine("发送失败");
         }
 
         public void SendSuccessEvent(TcpClient bc, byte[] msg)
         {
+            //Console.WriteLine("发送成功"+msg.Length);
+            //ParsePack pp = new ParsePack(msg);
+            //Console.WriteLine(pp.getInt());//长度
+            //Console.WriteLine(pp.getInt());//系统还是个人
+            //Console.WriteLine(pp.getString());//时间
+            //Console.WriteLine(pp.getShort());//包头
+            //Console.WriteLine(pp.getString());//内容
+            //Console.WriteLine("end");
         }
     }
 
@@ -285,11 +290,11 @@ namespace StartTool
         {
         }
 
-        public override void UserMsgRead(DataPack dp)
+        public override void UserMsgRead(ParsePack dp)
         {
-            string s = dp.ReadString();
-            Console.WriteLine(s);
-            MsgEnum me = (MsgEnum)dp.ReadShort();
+            string s = dp.getString();
+            MsgEnum me = (MsgEnum)dp.getShort();
+            Console.WriteLine(me);
             switch (me)
             {
                 case MsgEnum.DesktopImg:

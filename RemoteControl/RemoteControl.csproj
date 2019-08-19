@@ -111,5 +111,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MessageEncoding\MessageEncoding.csproj">
+      <Project>{6763F228-987E-49A9-B6FD-E6FE81F1E996}</Project>
+      <Name>MessageEncoding</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

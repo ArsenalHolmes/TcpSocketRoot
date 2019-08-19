@@ -47,3 +47,5 @@ C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\obj\Debug\Star
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\obj\Debug\StartTool.exe
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\obj\Debug\StartTool.pdb
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\obj\Debug\StartTool.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\bin\Debug\MessageEncoding.dll
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\StartTool\bin\Debug\MessageEncoding.pdb
