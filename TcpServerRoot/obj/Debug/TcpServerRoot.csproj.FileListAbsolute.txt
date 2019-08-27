@@ -8,3 +8,4 @@ C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpServerRoot\obj\Debug\
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpServerRoot\obj\Debug\TcpServerRoot.pdb
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpServerRoot\bin\Debug\MessageEncoding.dll
 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpServerRoot\bin\Debug\MessageEncoding.pdb
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpServerRoot\obj\Debug\TcpServerRoot.csprojAssemblyReference.cache

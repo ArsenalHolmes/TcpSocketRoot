@@ -42,6 +42,8 @@ namespace TcpClientRoot
         {
             this.socketEvent = socketEvent;
             dataPack = ToolClass.GetDataPack();
+            dataPack.setTcpClient(this);
+
             ConnectThread = new Thread(ConnectThreadFunc);
             ConnectThread.IsBackground = true;
             ConnectThread.Start();
@@ -134,8 +136,6 @@ namespace TcpClientRoot
             {
                 dp.Insert(DateTime.Now.ToString("hh:mm:ss"));
                 dp.Insert((int)mt);
-
-
 
                 byte[] msg = dp.ToArray();
                 client.SendBufferSize = msg.Length + 5;

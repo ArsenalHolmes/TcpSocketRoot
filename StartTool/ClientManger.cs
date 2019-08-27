@@ -17,14 +17,21 @@ namespace StartTool
     {
         public TcpClient bc;
         public static ClientManger instaces;
+
+        int wid;
+        int hig;
         public ClientManger(string ip,int port)
         {
             new LogManger(new LogClass(), AppDomain.CurrentDomain.BaseDirectory,"log.txt");
             instaces = this;
             ToolClass.GetDataPack = GetPack;
             ToolClass.msgArrLen = 102400;
+            ToolClass.SendHeaderPack = false;
             bc = new TcpClient(new socketEvent());
             bc.Connect(ip, port);
+
+            wid = (int) System.Windows.SystemParameters.PrimaryScreenWidth;//得到屏幕整体宽度
+            hig = (int) System.Windows.SystemParameters.PrimaryScreenHeight;//得到屏幕整体高度
         }
 
         public void CloseEvent()
@@ -40,10 +47,10 @@ namespace StartTool
         public void HandleDesktopImg()
         {
             CreatePack dp = new CreatePack();
-            dp += (short)MsgEnum.DesktopImg;
-            dp += GetDesktopScreenShot();
+            dp += (int)MsgEnum.DesktopImg;
+            dp = dp + wid + hig;
+            dp += GetDesktopScreenShot(wid,hig);
             bc.SendMsg(dp);
-            Console.WriteLine("返回桌面");
         }
 
         public void HandleMouseClick(ParsePack pp)
@@ -58,8 +65,8 @@ namespace StartTool
             float t_x = dp.getFloat();
             float t_y = dp.getFloat();
 
-            int x = (int)(1920 * t_x);
-            int y = (int)(1080 * t_y);
+            int x = (int)(wid * t_x);
+            int y = (int)(hig * t_y);
 
             SetCursorPos(x, y);
         }
@@ -170,7 +177,14 @@ namespace StartTool
                 int start = dp.getInt();
                 int end = dp.getInt();
                 int len = dp.getInt();
-                byte[] msg = dp.getBytes(len);
+                int l2 = dp.getInt();
+                byte[] msg = dp.getBytes(l2);
+
+                //if (fs==null)
+                //{
+                //    string dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                //    fs = new FileStream(Path.Combine(dir, full), FileMode.OpenOrCreate);
+                //}
                 // 消息头 文件名  开始位置 结束位置 总长度 内容
                 if (start == 0)
                 {
@@ -231,7 +245,7 @@ namespace StartTool
         {
             Console.WriteLine("连接成功");
             CreatePack dp = new CreatePack();
-            dp = dp + (short)MsgEnum.ComputerName + System.Net.Dns.GetHostEntry("localhost").HostName;
+            dp = dp + (int)MsgEnum.ComputerName + System.Net.Dns.GetHostEntry("localhost").HostName;
             bc.SendMsg(dp);
         }
 
@@ -292,9 +306,9 @@ namespace StartTool
 
         public override void UserMsgRead(ParsePack dp)
         {
-            string s = dp.getString();
-            MsgEnum me = (MsgEnum)dp.getShort();
-            Console.WriteLine(me);
+            string time = dp.getString();
+            MsgEnum me = (MsgEnum)dp.getInt();
+            Console.WriteLine(time+"--"+me);
             switch (me)
             {
                 case MsgEnum.DesktopImg:

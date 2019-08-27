@@ -37,6 +37,7 @@ namespace TcpServerRoot
             msgArr = new byte[ToolClass.msgArrLen];
             this.socketEvent = socketEvent;
 
+            Console.WriteLine("是否心跳包"+ToolClass.SendHeaderPack);
             if (ToolClass.SendHeaderPack)
             {
                 m_HeaderThread = new Thread(HeaderThread);
@@ -147,8 +148,6 @@ namespace TcpServerRoot
             {
                 LogManger.Instance.Error(e);
             }
-
-        
         }
 
         private void HeaderThread()
@@ -157,7 +156,7 @@ namespace TcpServerRoot
             {
                 Thread.Sleep(1000 * ToolClass.heartIntervalTime);
                 CreatePack cp = new CreatePack();
-                cp = cp + (int)SystemMessageType.HeartBeat;
+                cp += (int)SystemMessageType.HeartBeat;
                 SendMsg(cp, MessageType.System);
             }
         }

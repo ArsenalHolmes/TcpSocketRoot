@@ -20,7 +20,7 @@ namespace RemoteControl
             new LogManger(new LogClass(), AppDomain.CurrentDomain.BaseDirectory,"log.txt");
 
             ToolClass.GetDataPack = GetPack;
-            ToolClass.msgArrLen = 102400;
+            ToolClass.msgArrLen = 10240000;
             ToolClass.SendHeaderPack = false;
             bc = new TcpServer(new socketEvent());
             bc.InitServer("0.0.0.0",55555);
@@ -69,15 +69,20 @@ namespace RemoteControl
         public override void UserMsgRead(ParsePack dp)
         {
             string time = dp.getString();
-            short s = dp.getShort();
+            int s = dp.getInt();
             MsgEnum me = (MsgEnum)s;
+            LogManger.Instance.Info(time + "--" + me);
             switch (me)
             {
                 case MsgEnum.DesktopImg:
                     if (MainWindow.instances.ControlDic.ContainsKey(bc))
                     {
+                        int wid = dp.getInt();
+                        int hig = dp.getInt();
                         int len = dp.getInt();
-                        Console.WriteLine(len);
+
+                        Console.WriteLine(wid+"--"+hig);
+                        //Console.WriteLine("图片长度" + len);
                         MainWindow.instances.ControlDic[bc].RushDesktopImg(dp.getBytes(len));
                     }
                     break;
@@ -85,7 +90,6 @@ namespace RemoteControl
                     string n = dp.getString();
                     if (MainWindow.instances.ClientNameDic.ContainsKey(bc)==false)
                     {
-                      
                         MainWindow.instances.ClientNameDic.Add(bc, n);
                         MainWindow.instances.RushClientList();
                     }

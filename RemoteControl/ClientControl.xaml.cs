@@ -39,11 +39,11 @@ namespace RemoteControl
 
             this.Closed += Window_Closed;
             //this.KeyDown += KeyDownEvent;
-            this.PreviewKeyDown += ClientControl_PreviewKeyDown;
+            //this.PreviewKeyDown += ClientControl_PreviewKeyDown;
 
-            this.DesktopImg.MouseDown += ImgMouseDownEvent;
-            this.DesktopImg.MouseUp += ImgMouseUpEvent;
-            this.DesktopImg.MouseMove += ImgMouseMoveEvent;
+            //this.DesktopImg.MouseDown += ImgMouseDownEvent;
+            //this.DesktopImg.MouseUp += ImgMouseUpEvent;
+            //this.DesktopImg.MouseMove += ImgMouseMoveEvent;
 
             bar.Visibility = Visibility.Hidden;
 
@@ -55,6 +55,17 @@ namespace RemoteControl
 
         private void ClientControl_PreviewKeyDown(object sender, KeyEventArgs e)
         {
+
+            //if (e.KeyStates==Keyboard.GetKeyStates(Key.P))
+            //{
+            //    CreatePack cp = new CreatePack();
+            //    cp += (short)MsgEnum.DesktopImg;
+            //    bool b = client.SendMsg(cp);
+            //    Console.WriteLine("发送成功"+b);
+            //    return;
+            //}
+
+
             if (e.KeyStates == Keyboard.GetKeyStates(Key.F4) && Keyboard.Modifiers == ModifierKeys.Alt)
             {
                 e.Handled = true;
@@ -121,17 +132,12 @@ namespace RemoteControl
                 fs.Read(arr, 0, tempLen);
                 endIndex = (int)fs.Position;
 
-                //DataPack dp = new DataPack();
                 CreatePack dp = new CreatePack();
                 // 消息头 文件名  开始位置 结束位置 总长度 内容
-                dp = dp + (short)MsgEnum.SendFiles + fullName + startIndex + endIndex + len;
-                dp.Write(arr);
-
-
-                //bar.Dispatcher.BeginInvoke(new ProgressBarSetter(SetProgressBar), ((float)endIndex / (float)len) * 100f);
+                dp = dp + (int)MsgEnum.SendFiles + fullName + startIndex + endIndex + len+arr;
+                //dp.Write(arr);
 
                 client.SendMsg(dp);
-                Thread.Sleep(1);
             }
             fs.Dispose();
             fs.Close();
@@ -246,27 +252,26 @@ namespace RemoteControl
             while (isExit == false)
             {
                 //Thread.Sleep(MainWindow.instances.RushNumber);
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
                 if (client != null)
                 {
                     CreatePack dp = new CreatePack();
                     dp += (short)MsgEnum.DesktopImg;
                     bool b = client.SendMsg(dp);
-                    Console.WriteLine(b+"发送桌面请求成功");
                 }
             }
         }
 
         public void RushDesktopImg(byte[] msg)
         {
-            //LogManger.Instance.Info("图片长度"+msg.Length);
+            //LogManger.Instance.Info("图片长度" + msg.Length);
+            
             this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
                 BitmapImage bmp = new BitmapImage();
                 bmp.BeginInit();
                 bmp.StreamSource = new MemoryStream(msg);
                 bmp.EndInit();
-
                 DesktopImg.Source = bmp;
             });
         }
@@ -299,8 +304,6 @@ namespace RemoteControl
             {
                 bar.Visibility = Visibility.Hidden;
             }
-            //显示百分比
-            //label1.Content = (value / pbDown.Maximum) * 100 + "%";
         }
     }
 }

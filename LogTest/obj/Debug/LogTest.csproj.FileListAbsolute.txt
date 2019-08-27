@@ -1,0 +1,9 @@
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LogTest\bin\Debug\LogTest.exe
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LogTest\bin\Debug\LogTest.pdb
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LogTest\bin\Debug\LoggingSystem.dll
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LogTest\bin\Debug\LoggingSystem.pdb
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LogTest\obj\Debug\LogTest.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LogTest\obj\Debug\LogTest.csproj.CopyComplete
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LogTest\obj\Debug\LogTest.exe
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LogTest\obj\Debug\LogTest.pdb
+C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\LogTest\obj\Debug\LogTest.csprojAssemblyReference.cache

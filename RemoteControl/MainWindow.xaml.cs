@@ -45,6 +45,7 @@ namespace RemoteControl
             //new LogManger(new LogClass(),)
             this.Closed += CloseEvent;
             InitializeComponent();
+           
             server = new ServerManger();
 
             rushNumber.LostFocus += RushNumber_LostFocus;
@@ -54,6 +55,7 @@ namespace RemoteControl
             thread = new Thread(ThreadFunction);
             thread.IsBackground = true;
             thread.Start();
+
 
         }
 

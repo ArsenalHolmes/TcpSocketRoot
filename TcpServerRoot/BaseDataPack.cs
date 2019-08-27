@@ -26,8 +26,7 @@ namespace TcpServerRoot
         public void AddMsg(byte[] msg)
         {
             lock (ms)
-            {
-                //msgList.AddRange(msg);
+            {              
                 ms.Write(msg, 0, msg.Length);
             }
             HandleMsg();
@@ -74,6 +73,7 @@ namespace TcpServerRoot
 
         //长度-类型-时间-消息类型-内容
         //4-4-*-4-长度
+
         /// <summary>
         /// 区分系统消息和用户消息
         /// </summary>
@@ -81,9 +81,8 @@ namespace TcpServerRoot
         public void msgRead(byte[] msg)
         {
             ParsePack pp = new ParsePack(msg);
-
             MessageType mt = (MessageType)pp.getInt();
-
+            //string time = pp.getString();
             switch (mt)
             {
                 case MessageType.System:
@@ -92,9 +91,11 @@ namespace TcpServerRoot
                     });
                     break;
                 case MessageType.Normal:
-                    MainThreadFunctionQueue.Enqueue(()=> {
+                    MainThreadFunctionQueue.Enqueue(() =>
+                    {
                         UserMsgRead(pp);
                     });
+                    //UserMsgRead(pp);
                     break;
             }
         }
@@ -105,9 +106,11 @@ namespace TcpServerRoot
         /// <param name="red"></param>
         public void SystemMsgRead(ParsePack dp)
         {
+
             string s = dp.getString();
             SystemMessageType smt = (SystemMessageType)dp.getInt();
-            Console.WriteLine(s+"-"+smt);
+            
+            //Console.WriteLine(s+"-"+smt);
             switch (smt)
             {
                 case SystemMessageType.HeartBeat:

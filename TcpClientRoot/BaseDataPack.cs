@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using MessageEncoding;
 
 namespace TcpClientRoot
@@ -16,6 +17,7 @@ namespace TcpClientRoot
             lock (ms)
             {
                 //msgList.AddRange(msg);
+                ms.Seek(ms.Length, SeekOrigin.End);
                 ms.Write(msg, 0, msg.Length);
             }
             HandleMsg();
@@ -53,6 +55,7 @@ namespace TcpClientRoot
 
                 //ms = new MemoryStream(br.ReadBytes((int)(ms.Length - ms.Position)));
                 byte[] newArr = br.ReadBytes((int)(ms.Length - ms.Position));
+                Thread.Sleep(50);
                 ms = new MemoryStream();
                 if (newArr.Length != 0)
                 {
@@ -70,6 +73,7 @@ namespace TcpClientRoot
         /// <param name="arr"></param>
         public void msgRead(byte[] msg)
         {
+
             ParsePack dp = new ParsePack(msg);
             MessageType mt = (MessageType)dp.getInt();
             switch (mt)
@@ -117,6 +121,7 @@ namespace TcpClientRoot
             switch (smt)
             {
                 case SystemMessageType.HeartBeat:
+                    Console.WriteLine(bc+"--"+time);
                     bc.ReceiveHeart(time);
                     break;
             }

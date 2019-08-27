@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-
+using System.Threading;
 
 public class LogManger
 {
@@ -13,7 +13,7 @@ public class LogManger
         {
             if (instance == null)
             {
-                throw new Exception("LogManger没有生成");
+                new LogManger();
             }
             return instance;
         }
@@ -21,23 +21,56 @@ public class LogManger
     static LogManger instance;
     public string LogPath { get; private set; }
     string selfName;
-    public LogManger(ILog log, string LogDirPath = "",string LogFileName="",bool isShowData=true,string selfName="",int maxLength=5*1024*1024)
+
+
+    Thread FileThread;
+    public Queue<LogItem> LogQueue;
+
+    public LogManger(ILog log=null, string LogDirPath = "",string LogFileName="",string selfName="",int maxLength=5*1024*1024)
     {
         instance = this;
         this.log = log;
-        this.LogPath = string.Format("{0}/{1}_{2}_{3}_{4}", LogDirPath, DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, LogFileName);// LogPath;
         this.selfName = selfName;
-        if (this.selfName=="")
+        if (string.IsNullOrEmpty(selfName))
         {
-            this.selfName= Environment.MachineName;
+            this.selfName = Environment.MachineName;
         }
-        if (LogPath != ""&&LogFileName!="")
-        {
-            fs = new FileStream(LogPath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            sw = new StreamWriter(fs,Encoding.UTF8);
-            WriteLog("=====" + DateTime.Now.ToLocalTime().ToString() + "=====");
-        }
+
+        LogDirPath = LogDirPath == "" ? Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) : LogDirPath;
+        LogFileName = LogFileName == "" ? "Log.txt" : LogFileName;
+
+        this.LogPath = string.Format(@"{0}\{1}_{2}_{3}_{4}_{5}", LogDirPath,this.selfName, DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, LogFileName);// LogPath;
+        LogQueue = new Queue<LogItem>();
+
+
+        FileThread = new Thread(FileThreadFunc);
+        FileThread.Start(Thread.CurrentThread);
+
     }
+    void FileThreadFunc(object obj)
+    {
+        sw = new StreamWriter(LogPath, true, Encoding.UTF8);
+        WriteLog("===============" + DateTime.Now.ToString() + "===============");
+        Thread main = (Thread)obj;
+        while (main.IsAlive)
+        {
+            while (LogQueue.Count>0)
+            {
+                WriteLog(LogQueue.Dequeue().ToString());
+            }
+            sw.Flush();
+            Thread.Sleep(100);
+        }
+
+        while (LogQueue.Count > 0)
+        {
+            WriteLog(LogQueue.Dequeue().ToString());
+        }
+        sw.Flush();
+
+        SaveLog();
+    }
+
 
     public void Info(object msg,bool isPrint=true)
     {
@@ -47,7 +80,6 @@ public class LogManger
         }
         HandLogItem(msg, MsgType.Info);
     }
-
     public void Warning(object msg, bool isPrint = true)
     {
         if (log != null && isPrint)
@@ -67,48 +99,30 @@ public class LogManger
 
     void HandLogItem(object msg,MsgType mt)
     {
-        LogItem item = new LogItem(msg, selfName, MsgType.Error);
-        WriteLog(item.ToString());
+        LogItem item = new LogItem(msg, selfName,mt);
+        LogQueue.Enqueue(item);
     }
 
 
     StreamWriter sw;
-    FileStream fs;
     public void WriteLog(string msg)
     {
         try
         {
-            if (sw != null)
-            {
-                sw.WriteLine(msg);
-            }
+            sw.WriteLine(msg);
         }
         catch (Exception e)
         {
-
+            Console.WriteLine(e);
         }
-
     }
+
     public void SaveLog()
     {
-        if (sw != null)
-        {
-            try
-            {
-                fs.Flush();
-                fs.Close();
-                fs.Dispose();
-                sw.Dispose();
-                sw.Close();
-                sw = null;
-                fs = null;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-
-        }
+        sw.Flush();
+        sw.Close();
+        sw.Dispose();
+        sw = null;
     }
 }
 
@@ -120,8 +134,6 @@ public enum MsgType
 }
 public struct LogItem
 {
-
-
     MsgType type;
     object msg;
     DateTime time;
