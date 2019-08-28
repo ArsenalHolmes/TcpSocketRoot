@@ -38,50 +38,31 @@ namespace RemoteControl
             t.Start();
 
             this.Closed += Window_Closed;
-            //this.KeyDown += KeyDownEvent;
-            //this.PreviewKeyDown += ClientControl_PreviewKeyDown;
+            this.PreviewKeyDown += ClientControl_PreviewKeyDown;
 
-            //this.DesktopImg.MouseDown += ImgMouseDownEvent;
-            //this.DesktopImg.MouseUp += ImgMouseUpEvent;
-            //this.DesktopImg.MouseMove += ImgMouseMoveEvent;
+            this.DesktopImg.MouseDown += ImgMouseDownEvent;
+            this.DesktopImg.MouseUp += ImgMouseUpEvent;
+            this.DesktopImg.MouseMove += ImgMouseMoveEvent;
 
             bar.Visibility = Visibility.Hidden;
-
-
-            //CreatePack dp = new CreatePack();
-            //dp += (short)MsgEnum.DesktopImg;
-            //bool b = client.SendMsg(dp);
         }
 
         private void ClientControl_PreviewKeyDown(object sender, KeyEventArgs e)
         {
 
-            //if (e.KeyStates==Keyboard.GetKeyStates(Key.P))
-            //{
-            //    CreatePack cp = new CreatePack();
-            //    cp += (short)MsgEnum.DesktopImg;
-            //    bool b = client.SendMsg(cp);
-            //    Console.WriteLine("发送成功"+b);
-            //    return;
-            //}
-
-
             if (e.KeyStates == Keyboard.GetKeyStates(Key.F4) && Keyboard.Modifiers == ModifierKeys.Alt)
             {
                 e.Handled = true;
-                //DataPack spe = new DataPack();
                 CreatePack spe = new CreatePack();
-                spe = spe + (short)MsgEnum.SpeKeyBoard + (short)KeyBoardMsg.AltF4;
+                spe = spe + (int)MsgEnum.SpeKeyBoard + (int)KeyBoardMsg.AltF4;
                 client.SendMsg(spe);
-
             }
 
             if (Keyboard.Modifiers == ModifierKeys.Alt && e.KeyStates == Keyboard.GetKeyStates(Key.Tab))
             {
                 e.Handled = true;
-                //DataPack spe = new DataPack();
                 CreatePack spe = new CreatePack();
-                spe = spe + (short)MsgEnum.SpeKeyBoard + (short)KeyBoardMsg.AltTab;
+                spe = spe + (int)MsgEnum.SpeKeyBoard + (int)KeyBoardMsg.AltTab;
                 client.SendMsg(spe);
             }
 
@@ -90,14 +71,14 @@ namespace RemoteControl
                 e.Handled = true;
                 //DataPack spe = new DataPack();
                 CreatePack spe = new CreatePack();
-                spe = spe + (short)MsgEnum.SpeKeyBoard + (short)KeyBoardMsg.WinD;
+                spe = spe + (int)MsgEnum.SpeKeyBoard + (int)KeyBoardMsg.WinD;
                 client.SendMsg(spe);
             }
 
 
-            short s = (short)e.Key;
+            int s = (int)e.Key;
             CreatePack dp = new CreatePack();
-            dp = dp + (short)MsgEnum.KeyBoard + s;
+            dp = dp + (int)MsgEnum.KeyBoard + s;
             client.SendMsg(dp);
         }
 
@@ -163,7 +144,7 @@ namespace RemoteControl
 
             //DataPack dp = new DataPack();
             CreatePack dp = new CreatePack();
-            dp += (short)MsgEnum.MouseMove;
+            dp += (int)MsgEnum.MouseMove;
             dp += (float)x;
             dp += (float)y;
             client.SendMsg(dp);
@@ -176,8 +157,8 @@ namespace RemoteControl
             {
                 //DataPack dp = new DataPack();
                 CreatePack dp = new CreatePack();
-                dp += (short)MsgEnum.MouseClick;
-                dp += (short)MouseEventFlag.LeftUp;
+                dp += (int)MsgEnum.MouseClick;
+                dp += (int)MouseEventFlag.LeftUp;
                 client.SendMsg(dp);
             }
             //else if (e.RightButton == MouseButtonState.Released)
@@ -197,8 +178,8 @@ namespace RemoteControl
             {
                 //DataPack dp = new DataPack();
                 CreatePack dp = new CreatePack();
-                dp += (short)MsgEnum.MouseClick;
-                dp += (short)MouseEventFlag.LeftDown;
+                dp += (int)MsgEnum.MouseClick;
+                dp += (int)MouseEventFlag.LeftDown;
                 client.SendMsg(dp);
                 //LogManger.Instance.Info("左键按下");
             }
@@ -206,16 +187,16 @@ namespace RemoteControl
             {
                 //DataPack dp = new DataPack();
                 CreatePack dp = new CreatePack();
-                dp += (short)MsgEnum.MouseClick;
-                dp += (short)MouseEventFlag.RightDown;
+                dp += (int)MsgEnum.MouseClick;
+                dp += (int)MouseEventFlag.RightDown;
                 client.SendMsg(dp);
                 //LogManger.Instance.Info("右键按下");
 
                 Thread.Sleep(10);
                 //DataPack dp2 = new DataPack();
                 CreatePack dp2 = new CreatePack();
-                dp2 += (short)MsgEnum.MouseClick;
-                dp2 += (short)MouseEventFlag.RightUp;
+                dp2 += (int)MsgEnum.MouseClick;
+                dp2 += (int)MouseEventFlag.RightUp;
                 //LogManger.Instance.Info("右键抬起");
                 client.SendMsg(dp2);
             }
@@ -280,7 +261,6 @@ namespace RemoteControl
         {
             this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
-                Console.WriteLine(value);
                 if (value >= 90)
                 {
                     bar.Visibility = Visibility.Hidden;

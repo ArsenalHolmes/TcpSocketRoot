@@ -8,17 +8,17 @@ namespace TcpClientRoot
 {
     public abstract class BaseDataPack
     {
-        MemoryStream ms = new MemoryStream();
+        List<byte> msgList = new List<byte>();
 
         protected TcpClient bc;
         public void AddMsg(byte[] msg)
         {
-
-            lock (ms)
+            lock (msgList)
             {
-                //msgList.AddRange(msg);
-                ms.Seek(ms.Length, SeekOrigin.End);
-                ms.Write(msg, 0, msg.Length);
+                for (int i = 0; i < msg.Length; i++)
+                {
+                    msgList.Add(msg[i]);
+                }
             }
             HandleMsg();
         }
@@ -30,40 +30,28 @@ namespace TcpClientRoot
 
         private void HandleMsg()
         {
-            lock (ms)
+            lock (msgList)
             {
-                if (ms.Length < 4)
+                if (msgList.Count < 4)
                 {
                     return;
                 }
                 byte[] arr;
-                //using (BinaryReader br = new BinaryReader(ms))
-                //{
-                //    int len = br.ReadInt32();
-                //    int oLen = (int)(ms.Length - ms.Position);
-                //    if (len > oLen) return;
-                //    arr = br.ReadBytes(len);
-
-                //    ms = new MemoryStream(br.ReadBytes((int)(ms.Length - ms.Position)));
-                //}
-                ms.Seek(0, SeekOrigin.Begin);
-                BinaryReader br = new BinaryReader(ms);
-                int len = br.ReadInt32();
-                int oLen = (int)(ms.Length - ms.Position);
-                if (len > oLen) return;
-                arr = br.ReadBytes(len);
-
-                //ms = new MemoryStream(br.ReadBytes((int)(ms.Length - ms.Position)));
-                byte[] newArr = br.ReadBytes((int)(ms.Length - ms.Position));
-                Thread.Sleep(50);
-                ms = new MemoryStream();
-                if (newArr.Length != 0)
+                using (MemoryStream ms = new MemoryStream(msgList.ToArray()))
                 {
-                    ms.Write(newArr, 0, newArr.Length);
-                }
+                    using (BinaryReader br = new BinaryReader(ms))
+                    {
+                        int len = br.ReadInt32();
+                        int oLen = (int)(ms.Length - ms.Position);
+                        if (len > oLen || len == 0) { return; }
 
-                msgRead(arr);
-                if (ms.Length > 0) { HandleMsg(); }
+                        arr = br.ReadBytes(len);
+                        msgList.Clear();
+                        msgList.AddRange(br.ReadBytes((int)(ms.Length - ms.Position)));
+                        msgRead(arr);
+                        if (msgList.Count > 4) { HandleMsg(); }
+                    }
+                }
             }
         }
 
@@ -115,13 +103,11 @@ namespace TcpClientRoot
         /// <param name="red"></param>
         public void SystemMsgRead(ParsePack dp)
         {
-            //string time = dp.ReadString();
             string time = dp.getString();
             SystemMessageType smt = (SystemMessageType)dp.getInt();
             switch (smt)
             {
                 case SystemMessageType.HeartBeat:
-                    Console.WriteLine(bc+"--"+time);
                     bc.ReceiveHeart(time);
                     break;
             }

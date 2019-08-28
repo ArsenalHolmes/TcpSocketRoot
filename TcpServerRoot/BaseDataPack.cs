@@ -9,25 +9,17 @@ namespace TcpServerRoot
 {
     public abstract class BaseDataPack
     {
-
-        MemoryStream ms;
-
-        
-
-        public long MsgListCount
-        {
-            get
-            {
-                return ms.Length;
-            }
-        }
+        List<byte> msgList = new List<byte>();
 
         protected TcpClient bc;
         public void AddMsg(byte[] msg)
         {
-            lock (ms)
-            {              
-                ms.Write(msg, 0, msg.Length);
+            lock (msgList)
+            {
+                for (int i = 0; i < msg.Length; i++)
+                {
+                    msgList.Add(msg[i]);
+                }
             }
             HandleMsg();
         }
@@ -35,39 +27,33 @@ namespace TcpServerRoot
         public void setTcpClient(TcpClient bc)
         {
             this.bc = bc;
-            ms = new MemoryStream();
+            //ms = new MemoryStream();
         }
 
         private void HandleMsg()
         {
-            lock (ms)
+            lock (msgList)
             {
-                if (ms.Length<4)
+                if (msgList.Count < 4)
                 {
                     return;
                 }
-
                 byte[] arr;
-                ms.Seek(0, SeekOrigin.Begin);
-
-                BinaryReader br = new BinaryReader(ms);
-
-                int len = br.ReadInt32();
-                int oLen = (int)(ms.Length - ms.Position);
-                if (len > oLen) return;
-                arr = br.ReadBytes(len);
-
-                byte[] newArr = br.ReadBytes((int)(ms.Length - ms.Position));
-                ms = new MemoryStream();
-                if (newArr.Length!=0)
+                using (MemoryStream ms = new MemoryStream(msgList.ToArray()))
                 {
-                    ms.Write(newArr, 0, newArr.Length);
+                    using (BinaryReader br = new BinaryReader(ms))
+                    {
+                        int len = br.ReadInt32();
+                        int oLen = (int)(ms.Length - ms.Position);
+                        if (len > oLen || len == 0) { return; }
+
+                        arr = br.ReadBytes(len);
+                        msgList.Clear();
+                        msgList.AddRange(br.ReadBytes((int)(ms.Length - ms.Position)));
+                        msgRead(arr);
+                        if (msgList.Count > 4) { HandleMsg(); }
+                    }
                 }
-               
-
-                msgRead(arr);
-
-                //if (ms.Length > 0) { HandleMsg(); }
             }
         }
 
@@ -109,8 +95,6 @@ namespace TcpServerRoot
 
             string s = dp.getString();
             SystemMessageType smt = (SystemMessageType)dp.getInt();
-            
-            //Console.WriteLine(s+"-"+smt);
             switch (smt)
             {
                 case SystemMessageType.HeartBeat:

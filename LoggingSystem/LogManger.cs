@@ -58,7 +58,10 @@ public class LogManger
             {
                 WriteLog(LogQueue.Dequeue().ToString());
             }
-            sw.Flush();
+            if (sw!=null)
+            {
+                sw.Flush();
+            }
             Thread.Sleep(100);
         }
 

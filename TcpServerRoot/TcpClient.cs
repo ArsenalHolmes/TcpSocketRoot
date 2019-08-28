@@ -37,7 +37,6 @@ namespace TcpServerRoot
             msgArr = new byte[ToolClass.msgArrLen];
             this.socketEvent = socketEvent;
 
-            Console.WriteLine("是否心跳包"+ToolClass.SendHeaderPack);
             if (ToolClass.SendHeaderPack)
             {
                 m_HeaderThread = new Thread(HeaderThread);

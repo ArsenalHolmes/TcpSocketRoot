@@ -25,7 +25,7 @@ namespace StartTool
             new LogManger(new LogClass(), AppDomain.CurrentDomain.BaseDirectory,"log.txt");
             instaces = this;
             ToolClass.GetDataPack = GetPack;
-            ToolClass.msgArrLen = 102400;
+            ToolClass.msgArrLen = 1024000;
             ToolClass.SendHeaderPack = false;
             bc = new TcpClient(new socketEvent());
             bc.Connect(ip, port);
@@ -55,11 +55,10 @@ namespace StartTool
 
         public void HandleMouseClick(ParsePack pp)
         {
-
-            MouseEventFlag flag = (MouseEventFlag)pp.getShort();
+            MouseEventFlag flag = (MouseEventFlag)pp.getInt();
             mouse_event(flag, 0, 0, 0, UIntPtr.Zero);
-
         }
+
         public void HnadleMouseMove(ParsePack dp)
         {
             float t_x = dp.getFloat();
@@ -180,12 +179,6 @@ namespace StartTool
                 int l2 = dp.getInt();
                 byte[] msg = dp.getBytes(l2);
 
-                //if (fs==null)
-                //{
-                //    string dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                //    fs = new FileStream(Path.Combine(dir, full), FileMode.OpenOrCreate);
-                //}
-                // 消息头 文件名  开始位置 结束位置 总长度 内容
                 if (start == 0)
                 {
                     string dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
@@ -204,13 +197,13 @@ namespace StartTool
 
         public void HandleKeyBD(ParsePack dp)
         {
-            Key k = (Key)dp.getShort();
+            Key k = (Key)dp.getInt();
             Keyboard.Type(k);
         }
 
         internal void HandleSpeBD(ParsePack dp)
         {
-            KeyBoardMsg k = (KeyBoardMsg)dp.getShort();
+            KeyBoardMsg k = (KeyBoardMsg)dp.getInt();
             InputSimulator sim = new InputSimulator();
             Console.WriteLine(k);
             switch (k)
@@ -308,7 +301,6 @@ namespace StartTool
         {
             string time = dp.getString();
             MsgEnum me = (MsgEnum)dp.getInt();
-            Console.WriteLine(time+"--"+me);
             switch (me)
             {
                 case MsgEnum.DesktopImg:
