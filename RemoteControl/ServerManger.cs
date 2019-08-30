@@ -71,7 +71,6 @@ namespace RemoteControl
             string time = dp.getString();
             int s = dp.getInt();
             MsgEnum me = (MsgEnum)s;
-            LogManger.Instance.Info(time + "--" + me);
             switch (me)
             {
                 case MsgEnum.DesktopImg:
@@ -80,9 +79,6 @@ namespace RemoteControl
                         int wid = dp.getInt();
                         int hig = dp.getInt();
                         int len = dp.getInt();
-
-                        Console.WriteLine(wid+"--"+hig);
-                        //Console.WriteLine("图片长度" + len);
                         MainWindow.instances.ControlDic[bc].RushDesktopImg(dp.getBytes(len));
                     }
                     break;

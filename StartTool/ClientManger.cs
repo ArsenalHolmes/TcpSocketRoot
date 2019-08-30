@@ -321,7 +321,6 @@ namespace StartTool
                 case MsgEnum.SpeKeyBoard:
                     ClientManger.instaces.HandleSpeBD(dp);
                     break;
-
             }
         }
     }

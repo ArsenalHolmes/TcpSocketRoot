@@ -1,0 +1,9 @@
+﻿===============2019/8/30 17:47:35===============
+DMT02----Info----连接成功127.0.0.1:57384----2019/8/30 17:47:41
+DMT02----Info----断开连接----2019/8/30 17:48:36
+DMT02----Info----连接成功127.0.0.1:57397----2019/8/30 17:48:36
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 TcpServerRoot.TcpClient.ReceiveCallBack(IAsyncResult ar) 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpServerRoot\TcpClient.cs:行号 100----2019/8/30 17:48:42
+DMT02----Info----断开连接----2019/8/30 17:48:42
+===============2019/8/30 17:57:18===============

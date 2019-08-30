@@ -57,29 +57,28 @@ namespace RemoteControl
                 spe = spe + (int)MsgEnum.SpeKeyBoard + (int)KeyBoardMsg.AltF4;
                 client.SendMsg(spe);
             }
-
-            if (Keyboard.Modifiers == ModifierKeys.Alt && e.KeyStates == Keyboard.GetKeyStates(Key.Tab))
+            else if (Keyboard.Modifiers == ModifierKeys.Alt && e.KeyStates == Keyboard.GetKeyStates(Key.Tab))
             {
                 e.Handled = true;
                 CreatePack spe = new CreatePack();
                 spe = spe + (int)MsgEnum.SpeKeyBoard + (int)KeyBoardMsg.AltTab;
                 client.SendMsg(spe);
             }
-
-            if (Keyboard.Modifiers == ModifierKeys.Windows && e.KeyStates == Keyboard.GetKeyStates(Key.D))
+            else if (Keyboard.Modifiers == ModifierKeys.Windows && e.KeyStates == Keyboard.GetKeyStates(Key.D))
             {
                 e.Handled = true;
-                //DataPack spe = new DataPack();
                 CreatePack spe = new CreatePack();
                 spe = spe + (int)MsgEnum.SpeKeyBoard + (int)KeyBoardMsg.WinD;
                 client.SendMsg(spe);
             }
+            else
+            {
+                int s = (int)e.Key;
+                CreatePack dp = new CreatePack();
+                dp = dp + (int)MsgEnum.KeyBoard + s;
+                client.SendMsg(dp);
+            }
 
-
-            int s = (int)e.Key;
-            CreatePack dp = new CreatePack();
-            dp = dp + (int)MsgEnum.KeyBoard + s;
-            client.SendMsg(dp);
         }
 
 
@@ -95,7 +94,6 @@ namespace RemoteControl
         private void FilePath_PreviewDrop(object sender, DragEventArgs e)
         {
             string path = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
-            //FileInfo fi = new FileInfo(path);
 
             string fullName = Path.GetFileName(path);
             //文件名 起始位 终止位 整体长度 内容
@@ -116,8 +114,6 @@ namespace RemoteControl
                 CreatePack dp = new CreatePack();
                 // 消息头 文件名  开始位置 结束位置 总长度 内容
                 dp = dp + (int)MsgEnum.SendFiles + fullName + startIndex + endIndex + len+arr;
-                //dp.Write(arr);
-
                 client.SendMsg(dp);
             }
             fs.Dispose();
@@ -232,7 +228,6 @@ namespace RemoteControl
         {
             while (isExit == false)
             {
-                //Thread.Sleep(MainWindow.instances.RushNumber);
                 Thread.Sleep(100);
                 if (client != null)
                 {

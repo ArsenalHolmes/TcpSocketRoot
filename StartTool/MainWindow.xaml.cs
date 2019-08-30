@@ -8,6 +8,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
+//using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace StartTool
@@ -23,6 +25,9 @@ namespace StartTool
         public static MainWindow instances;
 
         ClientManger cm;
+
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+
         public MainWindow()
         {
             instances = this;
@@ -46,11 +51,63 @@ namespace StartTool
             socketThread.IsBackground = true;
             socketThread.Start();
 
-            this.KeyDown += KeyDownEvent;
+            KeyDown += KeyDownEvent;
 
             ipBox.LostFocus += IpBox_LostFocus;
             portBox.LostFocus += PortBox_LostFocus;
+
+
+            InitnotifyIcon();
         }
+
+        #region 小托盘
+
+        private void InitnotifyIcon()
+        {
+            //ShowInTaskbar = false;
+            //this.Visibility = Visibility.Hidden;
+
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon();
+            this.notifyIcon.BalloonTipText = "系统监控中... ...";
+            this.notifyIcon.ShowBalloonTip(2000);
+            this.notifyIcon.Text = "系统监控中... ...";
+            this.notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
+            this.notifyIcon.Visible = true;
+
+            //打开菜单项
+            System.Windows.Forms.MenuItem open = new System.Windows.Forms.MenuItem("Open");
+            open.Click += new EventHandler(Show);
+            //退出菜单项
+            System.Windows.Forms.MenuItem exit = new System.Windows.Forms.MenuItem("Exit");
+            exit.Click += new EventHandler(Close);
+            //关联托盘控件
+            System.Windows.Forms.MenuItem[] childen = new System.Windows.Forms.MenuItem[] { open, exit };
+            notifyIcon.ContextMenu = new System.Windows.Forms.ContextMenu(childen);
+
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler((o, e) =>
+            {
+                if (e.Button == System.Windows.Forms.MouseButtons.Left) this.Show(o, e);
+            });
+        }
+
+        private void Show(object sender, EventArgs e)
+        {
+            this.Visibility = System.Windows.Visibility.Visible;
+            this.ShowInTaskbar = true;
+            this.Activate();
+        }
+
+        private void Hide(object sender, EventArgs e)
+        {
+            this.ShowInTaskbar = false;
+            this.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void Close(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+        #endregion
 
         private void socketThreadFunction()
         {
