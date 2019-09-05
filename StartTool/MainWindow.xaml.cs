@@ -2,6 +2,7 @@
 //using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -62,24 +63,38 @@ namespace StartTool
 
         #region 小托盘
 
+        bool shouldClose;
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            //base.OnClosing(e);
+            if (!shouldClose)
+            {
+                e.Cancel = true;
+                Hide();
+            }
+
+        }
+
         private void InitnotifyIcon()
         {
             //ShowInTaskbar = false;
             //this.Visibility = Visibility.Hidden;
 
             this.notifyIcon = new System.Windows.Forms.NotifyIcon();
-            this.notifyIcon.BalloonTipText = "系统监控中... ...";
+            this.notifyIcon.BalloonTipText = "开机自启";
             this.notifyIcon.ShowBalloonTip(2000);
-            this.notifyIcon.Text = "系统监控中... ...";
+            this.notifyIcon.Text = "开机自启";
             this.notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
             this.notifyIcon.Visible = true;
 
             //打开菜单项
-            System.Windows.Forms.MenuItem open = new System.Windows.Forms.MenuItem("Open");
+            System.Windows.Forms.MenuItem open = new System.Windows.Forms.MenuItem("显示");
             open.Click += new EventHandler(Show);
+
             //退出菜单项
-            System.Windows.Forms.MenuItem exit = new System.Windows.Forms.MenuItem("Exit");
+            System.Windows.Forms.MenuItem exit = new System.Windows.Forms.MenuItem("退出");
             exit.Click += new EventHandler(Close);
+
             //关联托盘控件
             System.Windows.Forms.MenuItem[] childen = new System.Windows.Forms.MenuItem[] { open, exit };
             notifyIcon.ContextMenu = new System.Windows.Forms.ContextMenu(childen);
@@ -105,7 +120,9 @@ namespace StartTool
 
         private void Close(object sender, EventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            //System.Windows.Application.Current.Shutdown();
+            shouldClose = true;
+            Close();
         }
         #endregion
 

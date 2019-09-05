@@ -40,9 +40,9 @@ namespace RemoteControl
             this.Closed += Window_Closed;
             this.PreviewKeyDown += ClientControl_PreviewKeyDown;
 
-            this.DesktopImg.MouseDown += ImgMouseDownEvent;
-            this.DesktopImg.MouseUp += ImgMouseUpEvent;
-            this.DesktopImg.MouseMove += ImgMouseMoveEvent;
+            //this.DesktopImg.MouseDown += ImgMouseDownEvent;
+            //this.DesktopImg.MouseUp += ImgMouseUpEvent;
+            //this.DesktopImg.MouseMove += ImgMouseMoveEvent;
 
             bar.Visibility = Visibility.Hidden;
         }
@@ -91,33 +91,70 @@ namespace RemoteControl
         }
 
         #region 文件拖入
-        private void FilePath_PreviewDrop(object sender, DragEventArgs e)
+
+        Thread sendThread;
+        public int pos;
+        public int len;
+        void SendThreadFunc(object obj)
         {
-            string path = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
-
-            string fullName = Path.GetFileName(path);
-            //文件名 起始位 终止位 整体长度 内容
+            string path = (string)obj;
             FileStream fs = new FileStream(path, FileMode.Open);
+            string fullName = Path.GetFileName(path);
 
-            int readLen=102400;
-            int startIndex =0;
+            int readLen = 102400;
+            int startIndex = 0;
             int endIndex = 0;
-            int len = (int)fs.Length;
+            len = (int)fs.Length;
             while (fs.Length != fs.Position)
             {
                 startIndex = (int)fs.Position;
                 int tempLen = (int)(fs.Length - fs.Position < readLen ? fs.Length - fs.Position : readLen);
                 byte[] arr = new byte[tempLen];
                 fs.Read(arr, 0, tempLen);
+                pos = (int)fs.Position;
                 endIndex = (int)fs.Position;
 
                 CreatePack dp = new CreatePack();
                 // 消息头 文件名  开始位置 结束位置 总长度 内容
-                dp = dp + (int)MsgEnum.SendFiles + fullName + startIndex + endIndex + len+arr;
+                dp = dp + (int)MsgEnum.SendFiles + fullName + startIndex + endIndex + len + arr;
                 client.SendMsg(dp);
             }
             fs.Dispose();
             fs.Close();
+        }
+
+        private void FilePath_PreviewDrop(object sender, DragEventArgs e)
+        {
+            string path = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
+            sendThread = new Thread(new ParameterizedThreadStart(SendThreadFunc));
+            sendThread.Start(path);
+
+            SendFrame sf = new SendFrame(this);
+            sf.ShowDialog();
+
+            //string fullName = Path.GetFileName(path);
+            //文件名 起始位 终止位 整体长度 内容
+            //FileStream fs = new FileStream(path, FileMode.Open);
+
+            //int readLen=102400;
+            //int startIndex =0;
+            //int endIndex = 0;
+            //int len = (int)fs.Length;
+            //while (fs.Length != fs.Position)
+            //{
+            //    startIndex = (int)fs.Position;
+            //    int tempLen = (int)(fs.Length - fs.Position < readLen ? fs.Length - fs.Position : readLen);
+            //    byte[] arr = new byte[tempLen];
+            //    fs.Read(arr, 0, tempLen);
+            //    endIndex = (int)fs.Position;
+
+            //    CreatePack dp = new CreatePack();
+            //    // 消息头 文件名  开始位置 结束位置 总长度 内容
+            //    dp = dp + (int)MsgEnum.SendFiles + fullName + startIndex + endIndex + len+arr;
+            //    client.SendMsg(dp);
+            //}
+            //fs.Dispose();
+            //fs.Close();
         }
 
         private void FilePath_PreviewDragOver(object sender, DragEventArgs e)

@@ -69,7 +69,11 @@ public class LogManger
         {
             WriteLog(LogQueue.Dequeue().ToString());
         }
-        sw.Flush();
+
+        if (sw!=null)
+        {
+            sw.Flush();
+        }
 
         SaveLog();
     }
@@ -110,22 +114,28 @@ public class LogManger
     StreamWriter sw;
     public void WriteLog(string msg)
     {
-        try
+        if (sw!=null)
         {
             sw.WriteLine(msg);
+
         }
-        catch (Exception e)
+        else
         {
-            Console.WriteLine(e);
+            Console.WriteLine("sw为空:"+msg);
         }
     }
 
     public void SaveLog()
     {
-        sw.Flush();
-        sw.Close();
-        sw.Dispose();
-        sw = null;
+        if (sw!=null)
+        {
+            sw.Flush();
+            sw.Close();
+            sw.Dispose();
+            sw = null;
+        }
+
+
     }
 }
 

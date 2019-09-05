@@ -1,0 +1,252 @@
+﻿===============2019/9/2 8:50:28===============
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:50:30
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:50:30
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:50:32
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:50:34
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:50:36
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:50:38
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:50:40
+===============2019/9/2 8:55:23===============
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:24
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:25
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:27
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:29
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:31
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:33
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:35
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:37
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:39
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:41
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:43
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:45
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:47
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:49
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:51
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:53
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:55
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:57
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:55:59
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:01
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:03
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:05
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:07
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:09
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:11
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:13
+===============2019/9/2 8:56:20===============
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:21
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:22
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:24
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:26
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:28
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:30
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:32
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:34
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:36
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:38
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:40
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:42
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:56:44
+===============2019/9/2 8:57:02===============
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:57:03
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:57:04
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:57:06
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:57:08
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:57:10
+===============2019/9/2 8:58:11===============
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:58:12
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:58:13
+===============2019/9/2 8:58:26===============
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:58:27
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:58:28
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:58:30
+===============2019/9/2 8:58:49===============
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:58:51
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:58:51
+===============2019/9/2 8:58:57===============
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:58:58
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:58:59
+DMT02----Error----System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:55555
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 TcpClientRoot.TcpClient.Connect() 位置 C:\Users\admin\source\repos\RemoteControl\TcpSocketRoot\TcpClientRoot\TcpClient.cs:行号 98----2019/9/2 8:59:01

@@ -226,6 +226,9 @@ namespace StartTool
         public void ClientDisconnect(TcpClient tc)
         {
             Console.WriteLine("断开连接" + tc.IsConnect);
+            //fs.Dispose();
+            //fs.Close();
+            //fs = null;
             //tc.Connect();
         }
 
